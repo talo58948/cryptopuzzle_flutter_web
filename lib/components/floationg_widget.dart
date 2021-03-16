@@ -51,4 +51,10 @@ class _FloatingWidgetState extends State<FloatingWidget>
       ),
     );
   }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
 }
