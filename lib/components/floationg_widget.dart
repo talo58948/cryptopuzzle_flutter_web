@@ -23,7 +23,7 @@ class _FloatingWidgetState extends State<FloatingWidget>
   void initState() {
     super.initState();
     controller = AnimationController(
-      duration: Duration(milliseconds: 500),
+      duration: Duration(milliseconds: 250),
       vsync: this,
     );
     animation = CurvedAnimation(

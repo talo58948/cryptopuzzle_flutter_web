@@ -2,9 +2,9 @@ import 'package:flutter/material.dart' show required;
 import 'piece.dart';
 
 class Puzzle {
-  List<Piece> puzzlePieces;
-  int numberOfPieces;
-  static final Puzzle dflt = Puzzle(puzzlePieces: [
+  final List<Piece> puzzlePieces;
+  final int numberOfPieces;
+  static const Puzzle dflt = Puzzle(puzzlePieces: [
     Piece.dflt,
     Piece.dflt,
     Piece.dflt,
@@ -15,5 +15,5 @@ class Puzzle {
     Piece.dflt,
     Piece.dflt,
   ], numberOfPieces: 9);
-  Puzzle({@required this.puzzlePieces, @required this.numberOfPieces});
+  const Puzzle({@required this.puzzlePieces, @required this.numberOfPieces});
 }
