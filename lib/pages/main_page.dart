@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:web1/components/puzzel_cabinet.dart';
-import 'package:web1/components/hoverable_widget.dart';
-import 'package:web1/components/floationg_widget.dart';
+import 'package:web1/components/floating_widget.dart';
+import 'package:web1/components/puzzle_grid.dart';
 
 class MainPage extends StatelessWidget {
   @override
@@ -16,21 +15,38 @@ class MainPage extends StatelessWidget {
         child: Icon(Icons.message),
         onPressed: () {},
       ),
-      body: Container(
-        child: Column(
-          children: [
-            Expanded(
-              child: ShitRow(),
-            ),
-            Expanded(
-              child: ShitRow(),
-            ),
-            Expanded(
-              child: ShitRow(),
-            ),
-          ],
+      body: Center(
+        child: SingleChildScrollView(
+          child: Container(
+            height: 6000,
+            width: 2000,
+            child: PuzzleGrid(),
+          ),
         ),
       ),
+    );
+  }
+}
+
+class ShitExperiment extends StatelessWidget {
+  const ShitExperiment({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Expanded(
+          child: ShitRow(),
+        ),
+        Expanded(
+          child: ShitRow(),
+        ),
+        Expanded(
+          child: ShitRow(),
+        ),
+      ],
     );
   }
 }

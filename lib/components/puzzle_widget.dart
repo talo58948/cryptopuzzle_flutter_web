@@ -4,36 +4,64 @@ import 'package:web1/models/puzzle.dart';
 import 'dart:math';
 import 'package:web1/manager.dart';
 
-class PuzzleWidget extends StatelessWidget {
-  final bool showGrid;
+class PuzzleWidget extends StatefulWidget {
   final Puzzle puzzle;
-  const PuzzleWidget({this.showGrid = false, this.puzzle = Puzzle.dflt});
+  const PuzzleWidget({this.puzzle = Puzzle.dflt});
 
+  @override
+  _PuzzleWidgetState createState() => _PuzzleWidgetState();
+}
+
+class _PuzzleWidgetState extends State<PuzzleWidget>
+    with SingleTickerProviderStateMixin {
+  AnimationController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 250),
+    );
+    controller.addListener(() {
+      gap = controller.value * 10.0;
+      setState(() {});
+    });
+  }
+
+  double gap = 0.0;
   Widget _getColumn() {
-    int _sideLen = sqrt(puzzle.numberOfPieces).round();
-    List<Row> columnChildren = [];
+    int _sideLen = sqrt(widget.puzzle.numberOfPieces).round();
+    List<Widget> columnChildren = [];
     for (int i = 0; i < _sideLen; i++) {
-      List<_PuzzlePiece> rowChildren = [];
-      for (int i = 0; i < _sideLen; i++) {
+      List<Widget> rowChildren = [];
+      for (int j = 0; j < _sideLen; j++) {
         rowChildren.add(
           _PuzzlePiece(
-            piece: puzzle.puzzlePieces[i],
+            piece: widget.puzzle.puzzlePieces[i * _sideLen + j],
             onPressed: Manager.onPressOnPiece(
-              puzzle.puzzlePieces[i],
+              widget.puzzle.puzzlePieces[i],
             ),
           ),
         );
+        rowChildren.add(SizedBox(
+          width: gap,
+        ));
       }
+      rowChildren.removeLast();
       columnChildren.add(
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: rowChildren,
         ),
       );
+      columnChildren.add(SizedBox(
+        height: gap,
+      ));
     }
+    columnChildren.removeLast();
     return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: columnChildren,
     );
@@ -41,7 +69,20 @@ class PuzzleWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return _getColumn();
+    return MouseRegion(
+        onEnter: (event) {
+          controller.forward();
+        },
+        onExit: (event) {
+          controller.reverse();
+        },
+        child: _getColumn());
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
   }
 }
 
@@ -81,16 +122,29 @@ class __PuzzlePieceState extends State<_PuzzlePiece> {
                   ),
                 ],
         ),
-        child: FlatButton(
-          hoverColor: Colors.transparent,
-          padding: EdgeInsets.all(0.0),
-          onPressed: widget.onPressed,
-          child: Image(
-            image: widget.piece.image,
-            fit: BoxFit.cover,
+        child: ButtonTheme(
+          padding: EdgeInsets.symmetric(
+              vertical: 0.0, horizontal: 0.0), //adds padding inside the button
+          materialTapTargetSize: MaterialTapTargetSize
+              .shrinkWrap, //limits the touch area to the button area
+          minWidth: 0, //wraps child's width
+          height: 0, //wraps child's height
+          child: FlatButton(
+            onPressed: widget.onPressed,
+            child: Image(
+              image: widget.piece.image,
+              fit: BoxFit.cover,
+            ),
           ),
         ),
       ),
     );
   }
 }
+/*ButtonTheme(
+  padding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0), //adds padding inside the button
+  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap, //limits the touch area to the button area
+  minWidth: 0, //wraps child's width
+  height: 0, //wraps child's height
+  child: RaisedButton(onPressed: (){}, child: Text('Button Text')), //your original button
+);*/
