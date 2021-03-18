@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'pages/main_page.dart';
+import 'package:web1/pages/about_page.dart';
+import 'pages/featured_puzzles_page.dart';
 
 void main() {
   runApp(App());
@@ -12,8 +13,8 @@ class App extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
-        '/': (context) => MainPage(),
-        // '/piece':(context, p)
+        '/': (context) => AboutPage(),
+        '/featured-puzzles': (context) => FeaturedPuzzlesPage(),
       },
     );
   }

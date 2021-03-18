@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:web1/components/puzzle_widget.dart';
 import 'package:web1/constants.dart';
-import 'package:web1/manager.dart';
 import 'package:web1/models/puzzle.dart';
 
 class PuzzleCabinet extends StatelessWidget {

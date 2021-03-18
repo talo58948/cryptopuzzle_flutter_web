@@ -5,6 +5,12 @@ import 'models/piece.dart';
 import 'constants.dart';
 import 'models/puzzle.dart';
 
+enum Pages {
+  about,
+  featured,
+}
+// const Map<Pages, Route> routes;
+
 class Manager {
   static Function onPressOnPiece(Piece piece) {
     return () {};
@@ -36,4 +42,7 @@ class Manager {
     }
     return li;
   }
+
+  static void moveTo() {}
+  static void onPressedOnFAB() {}
 }

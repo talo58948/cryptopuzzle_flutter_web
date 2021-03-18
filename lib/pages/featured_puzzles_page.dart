@@ -1,21 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:web1/components/floating_widget.dart';
 import 'package:web1/components/puzzle_grid.dart';
+import 'custom_page.dart';
 
-class MainPage extends StatelessWidget {
+class FeaturedPuzzlesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: Text('CryptoBullying'),
-        centerTitle: true,
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.message),
-        onPressed: () {},
-      ),
-      body: Center(
+    return CustomPage(
+      child: Center(
         child: SingleChildScrollView(
           child: Container(
             height: 6000,
