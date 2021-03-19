@@ -5,6 +5,7 @@ class Puzzle {
   final List<Piece> puzzlePieces;
   final int numberOfPieces;
   final String id;
+  final String name;
   final double ratio;
   static const Puzzle dflt = Puzzle(
     puzzlePieces: [
@@ -20,6 +21,7 @@ class Puzzle {
     ],
     numberOfPieces: 9,
     id: '#1524',
+    name: 'dflt1',
     ratio: 1.0,
   );
   static const Puzzle dflt2 = Puzzle(
@@ -43,12 +45,14 @@ class Puzzle {
     ],
     numberOfPieces: 16,
     id: '#1655',
+    name: 'dflt2',
     ratio: 1.0,
   );
   const Puzzle({
     @required this.puzzlePieces,
     @required this.numberOfPieces,
     @required this.id,
-    this.ratio,
+    @required this.name,
+    this.ratio = 1.0,
   });
 }

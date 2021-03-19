@@ -46,7 +46,6 @@ class _PuzzleContainerState extends State<PuzzleContainer>
     double pieceHeight = pieceWidth * widget.puzzle.ratio;
 
     List<Widget> columnChildren = [];
-    //maybe make gap ratio?
     for (int i = 0; i < sideLen * sideLen; i += sideLen) {
       List<Widget> rowChildren = [];
       for (int j = 0; j < sideLen; j++) {
@@ -55,7 +54,7 @@ class _PuzzleContainerState extends State<PuzzleContainer>
             onPressed:
                 Manager.onPressOnPiece(widget.puzzle.puzzlePieces[i + j]),
             piece: widget.puzzle.puzzlePieces[i + j],
-            height: pieceHeight - gap,
+            height: pieceHeight - gap * widget.puzzle.ratio,
             width: pieceWidth - gap,
           ),
         );
