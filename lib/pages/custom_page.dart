@@ -12,13 +12,14 @@ class CustomPage extends StatelessWidget {
       backgroundColor: kBackgroundColor,
       floatingActionButton: FloatingActionButton(
         backgroundColor: kAccentColor,
+        splashColor: kSecondaryAccentColor,
         onPressed: () => Manager.onPressedOnFAB(),
         child: Icon(Icons.message),
       ),
       body: Column(
         children: [
           Navbar(),
-          Container(
+          Expanded(
             child: SingleChildScrollView(
               child: child,
             ),

@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart'
-    show TextStyle, Color, Colors, FontWeight;
+import 'package:flutter/material.dart';
 
 const kAvgWidthOfPuzzle = 500; //represents pixels
 const kPuzzleTitleStyle = TextStyle(
@@ -7,8 +6,7 @@ const kPuzzleTitleStyle = TextStyle(
   fontSize: 24.0,
 );
 
-const kPuzzleCabinetWidthMax = 400.0;
-const kPuzzleCabinetWidthMin = 200.0;
+const kPuzzleCabinetWidthMax = 500.0;
 
 const kTitleStyle = TextStyle(
   fontWeight: FontWeight.bold,
@@ -33,6 +31,7 @@ const kNavbarTitlesStyle = TextStyle(
   height: 1.6,
   fontFamily: 'RobotoCondensed-Light.ttf',
   color: Colors.white,
+  textBaseline: TextBaseline.ideographic,
 );
 
 const kWidthOfContentContainer = 1000.0;
@@ -40,3 +39,4 @@ const kWidthOfContentContainer = 1000.0;
 const kBackgroundColor = Color(0xFFF7F3E3);
 const kSecondaryColor = Color(0xFF181818);
 const kAccentColor = Colors.red;
+const kSecondaryAccentColor = Colors.redAccent;

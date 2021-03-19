@@ -7,40 +7,50 @@ class Navbar extends StatelessWidget {
   Navbar({this.page});
   @override
   Widget build(BuildContext context) {
-    List<Widget> getChildren() {
+    Widget buildBar() {
       List<Widget> titles = [];
       Pages.values.forEach((element) {
         titles.add(
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 20.0,
-              vertical: 30.0,
-            ),
-            child: Text(
-              element.toString().toUpperCase(),
-              style: kNavbarTitlesStyle,
+          // ignore: deprecated_member_use
+          FlatButton(
+            splashColor: Colors.grey[900],
+            onPressed: () => Manager.moveTo(element, context),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 20.0,
+                vertical: 22.5,
+              ),
+              child: Text(
+                element.toString().toUpperCase().replaceAll('PAGES.', ''),
+                style: kNavbarTitlesStyle,
+                textAlign: TextAlign.center,
+              ),
             ),
           ),
         );
         titles.add(
           VerticalDivider(
-            width: 20,
-            thickness: 20.0,
-            color: Colors.black,
+            thickness: 10.0,
+            color: Colors.white,
           ),
         );
       });
-      return titles;
+      try {
+        return Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: titles,
+        );
+      } catch (e) {
+        print(e);
+        return Text('Error');
+      }
     }
 
     return Container(
-      color: Colors.black,
+      color: kSecondaryColor,
       child: Center(
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: getChildren(),
-        ),
+        child: buildBar(),
       ),
     );
   }

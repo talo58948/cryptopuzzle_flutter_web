@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:web1/components/floating_widget.dart';
 import 'package:web1/components/puzzle_grid.dart';
+import 'package:web1/components/puzzle_grid_widget.dart';
 import 'custom_page.dart';
 
 class FeaturedPuzzlesPage extends StatelessWidget {
@@ -12,7 +13,7 @@ class FeaturedPuzzlesPage extends StatelessWidget {
           child: Container(
             height: 6000,
             width: 2000,
-            child: PuzzleGrid(),
+            child: PuzzleGridWidget(),
           ),
         ),
       ),

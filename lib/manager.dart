@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:web1/constants.dart';
+import 'package:web1/pages/featured_puzzles_page.dart';
 
 import 'models/piece.dart';
 import 'constants.dart';
@@ -23,16 +24,16 @@ class Manager {
     return (_width / kAvgWidthOfPuzzle).floor();
   }
 
-  static double getSizeOfSinglePuzzle(
-      BuildContext context, int maxPuzzlesInRow) {
-    double _width = MediaQuery.of(context).size.width / maxPuzzlesInRow;
-    if (_width > kPuzzleCabinetWidthMax) {
-      _width = kPuzzleCabinetWidthMax;
-    } else if (_width < kPuzzleCabinetWidthMin) {
-      _width = kPuzzleCabinetWidthMin;
-    }
-    return _width;
-  }
+  // static double getSizeOfSinglePuzzle(
+  //     BuildContext context, int maxPuzzlesInRow) {
+  //   double _width = MediaQuery.of(context).size.width / maxPuzzlesInRow;
+  //   if (_width > kPuzzleCabinetWidthMax) {
+  //     _width = kPuzzleCabinetWidthMax;
+  //   } else if (_width < kPuzzleCabinetWidthMin) {
+  //     _width = kPuzzleCabinetWidthMin;
+  //   }
+  //   return _width;
+  // }
 
   static List<Puzzle> getDisplayPuzzles() {
     List<Puzzle> li = [];
@@ -43,6 +44,13 @@ class Manager {
     return li;
   }
 
-  static void moveTo() {}
+  static void moveTo(Pages page, BuildContext context) {
+    if (page == Pages.featured) {
+      Navigator.pushNamed(context, '/featured-puzzles');
+    } else if (page == Pages.about) {
+      Navigator.pushNamed(context, '/');
+    }
+  }
+
   static void onPressedOnFAB() {}
 }
