@@ -7,36 +7,43 @@ import 'package:web1/manager.dart';
 class PuzzleGridWidget extends StatelessWidget {
   final List<Puzzle> puzzles = Manager.getDisplayPuzzles();
 
-  Column buildGrid(BuildContext context) {
+  Container buildGrid(BoxConstraints constraints) {
     List<Widget> columnChildren = [];
-    int numInRow = Manager.getMaxPuzzlesInRow(context);
-    for (int i = 0; i < puzzles.length; i += numInRow) {
+    int numInRow = Manager.getMaxPuzzlesInRow(constraints);
+
+    for (int i = 0;
+        i < puzzles.length - puzzles.length % numInRow;
+        i += numInRow) {
       List<Widget> rowChildren = [];
       for (int j = 0; j < numInRow; j++) {
         rowChildren.add(
-          PuzzleCabinet(
+          Expanded(
+            child: PuzzleCabinet(
               puzzle: puzzles[i + j],
-              width: kPuzzleCabinetWidthMax,
-              height: kPuzzleCabinetWidthMax),
+            ),
+          ),
         );
       }
       columnChildren.add(
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: rowChildren,
         ),
       );
     }
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: columnChildren,
+    return Container(
+      height: columnChildren.length * kPuzzleCaninetHeightMin,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: columnChildren,
+      ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return buildGrid(context);
+    return LayoutBuilder(
+      builder: (context, constraints) => buildGrid(constraints),
+    );
   }
 }

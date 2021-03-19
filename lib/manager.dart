@@ -1,7 +1,6 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/cupertino.dart' hide Stack;
 import 'package:web1/constants.dart';
-import 'package:web1/pages/featured_puzzles_page.dart';
-
+import 'package:stack/stack.dart';
 import 'models/piece.dart';
 import 'constants.dart';
 import 'models/puzzle.dart';
@@ -18,10 +17,10 @@ class Manager {
     //remember to do Hero animation with the piece
   }
 
-  static int getMaxPuzzlesInRow(BuildContext context) {
-    double _width = MediaQuery.of(context).size.width;
+  static int getMaxPuzzlesInRow(BoxConstraints constraints) {
+    double _width = constraints.widthConstraints().maxWidth;
     //maybe listen for changes??
-    return (_width / kAvgWidthOfPuzzle).floor();
+    return (_width / kPuzzleCabinetWidthMin).floor();
   }
 
   // static double getSizeOfSinglePuzzle(
@@ -44,11 +43,21 @@ class Manager {
     return li;
   }
 
-  static void moveTo(Pages page, BuildContext context) {
-    if (page == Pages.featured) {
-      Navigator.pushNamed(context, '/featured-puzzles');
-    } else if (page == Pages.about) {
-      Navigator.pushNamed(context, '/');
+  static Stack<Pages> navStack = Stack<Pages>();
+  static void moveTo(Pages to, Pages from, BuildContext context) {
+    if (navStack.isNotEmpty && navStack.top() == to) {
+      navStack.pop();
+      Navigator.pop(context);
+    } else {
+      switch (to) {
+        case Pages.featured:
+          Navigator.pushNamed(context, '/featured-puzzles');
+          break;
+        case Pages.about:
+          Navigator.pushNamed(context, '/');
+          break;
+      }
+      navStack.push(from);
     }
   }
 

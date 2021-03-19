@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:web1/components/content_container.dart';
 import 'package:web1/components/floating_widget.dart';
 import 'package:web1/components/puzzle_grid.dart';
 import 'package:web1/components/puzzle_grid_widget.dart';
@@ -10,10 +11,10 @@ class FeaturedPuzzlesPage extends StatelessWidget {
     return CustomPage(
       child: Center(
         child: SingleChildScrollView(
-          child: Container(
-            height: 6000,
-            width: 2000,
-            child: PuzzleGridWidget(),
+          child: ContentContainer(
+            // height: 6000,
+            // width: 2000,
+            children: [PuzzleGridWidget()],
           ),
         ),
       ),

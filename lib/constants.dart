@@ -6,7 +6,8 @@ const kPuzzleTitleStyle = TextStyle(
   fontSize: 24.0,
 );
 
-const kPuzzleCabinetWidthMax = 500.0;
+const kPuzzleCabinetWidthMin = 300.0;
+const kPuzzleCaninetHeightMin = 400.0;
 
 const kTitleStyle = TextStyle(
   fontWeight: FontWeight.bold,

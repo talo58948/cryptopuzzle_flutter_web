@@ -56,9 +56,11 @@ class _PuzzleWidgetState extends State<PuzzleWidget>
           children: rowChildren,
         ),
       );
-      columnChildren.add(SizedBox(
-        height: gap,
-      ));
+      columnChildren.add(
+        SizedBox(
+          height: gap,
+        ),
+      );
     }
     columnChildren.removeLast();
     return Column(

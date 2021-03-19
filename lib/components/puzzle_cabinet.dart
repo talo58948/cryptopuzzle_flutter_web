@@ -7,13 +7,12 @@ class PuzzleCabinet extends StatelessWidget {
   final Puzzle puzzle;
   final double width;
   final double height;
-  PuzzleCabinet(
-      {@required this.puzzle, @required this.width, @required this.height});
+  PuzzleCabinet({@required this.puzzle, this.width, this.height});
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: width,
-      height: height,
+      // width: width,
+      // height: height,
       child: Column(
         children: [
           Text(

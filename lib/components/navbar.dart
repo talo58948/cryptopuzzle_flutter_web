@@ -14,7 +14,7 @@ class Navbar extends StatelessWidget {
           // ignore: deprecated_member_use
           FlatButton(
             splashColor: Colors.grey[900],
-            onPressed: () => Manager.moveTo(element, context),
+            onPressed: () => Manager.moveTo(element, page, context),
             child: Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 20.0,
