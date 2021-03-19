@@ -6,8 +6,8 @@ const kPuzzleTitleStyle = TextStyle(
   fontSize: 24.0,
 );
 
-const kPuzzleCabinetWidthMin = 300.0;
-const kPuzzleCaninetHeightMin = 400.0;
+const kPuzzleContainerWidth = 400.0;
+const kPuzzleWidth = 350.0;
 
 const kTitleStyle = TextStyle(
   fontWeight: FontWeight.bold,
@@ -16,6 +16,7 @@ const kTitleStyle = TextStyle(
   fontSize: 48.0,
   height: 1.6,
   fontFamily: 'RobotoCondensed-Light.ttf',
+  color: Colors.black,
 );
 
 const kContentStyle = TextStyle(
@@ -41,3 +42,5 @@ const kBackgroundColor = Color(0xFFF7F3E3);
 const kSecondaryColor = Color(0xFF181818);
 const kAccentColor = Colors.red;
 const kSecondaryAccentColor = Colors.redAccent;
+
+const kFocusedPieceWidth = 500.0;

@@ -6,6 +6,7 @@ import 'package:web1/manager.dart';
 
 class PuzzleWidget extends StatefulWidget {
   final Puzzle puzzle;
+
   const PuzzleWidget({this.puzzle = Puzzle.dflt});
 
   @override
@@ -37,18 +38,23 @@ class _PuzzleWidgetState extends State<PuzzleWidget>
       List<Widget> rowChildren = [];
       for (int j = 0; j < _sideLen; j++) {
         rowChildren.add(
-          _PuzzlePiece(
-            piece: widget.puzzle.puzzlePieces[i * _sideLen + j],
-            onPressed: Manager.onPressOnPiece(
-              widget.puzzle.puzzlePieces[i],
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.all(gap),
+              child: _PuzzlePiece(
+                piece: widget.puzzle.puzzlePieces[i * _sideLen + j],
+                onPressed: Manager.onPressOnPiece(
+                  widget.puzzle.puzzlePieces[i],
+                ),
+              ),
             ),
           ),
         );
-        rowChildren.add(SizedBox(
-          width: gap,
-        ));
+        // rowChildren.add(SizedBox(
+        //   width: gap,
+        // ));
       }
-      rowChildren.removeLast();
+      // rowChildren.removeLast();
       columnChildren.add(
         Row(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -56,13 +62,13 @@ class _PuzzleWidgetState extends State<PuzzleWidget>
           children: rowChildren,
         ),
       );
-      columnChildren.add(
-        SizedBox(
-          height: gap,
-        ),
-      );
+      // columnChildren.add(
+      //   SizedBox(
+      //     height: gap,
+      //   ),
+      // );
     }
-    columnChildren.removeLast();
+    // columnChildren.removeLast();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: columnChildren,
@@ -102,40 +108,46 @@ class __PuzzlePieceState extends State<_PuzzlePiece> {
 
   @override
   Widget build(BuildContext context) {
-    return MouseRegion(
-      onEnter: (event) {
-        showOutline = true;
-        setState(() {});
-      },
-      onExit: (event) {
-        showOutline = false;
-        setState(() {});
-      },
-      child: Container(
-        decoration: BoxDecoration(
-          boxShadow: !showOutline
-              ? null
-              : [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 3,
-                    blurRadius: 5,
-                    offset: Offset(0, 2), // changes position of shadow
-                  ),
-                ],
-        ),
-        child: ButtonTheme(
-          padding: EdgeInsets.symmetric(
-              vertical: 0.0, horizontal: 0.0), //adds padding inside the button
-          materialTapTargetSize: MaterialTapTargetSize
-              .shrinkWrap, //limits the touch area to the button area
-          minWidth: 0, //wraps child's width
-          height: 0, //wraps child's height
-          child: FlatButton(
-            onPressed: widget.onPressed,
-            child: Image(
-              image: widget.piece.image,
-              fit: BoxFit.cover,
+    return LayoutBuilder(
+      builder: (context, constraints) => Container(
+        width: constraints.maxWidth,
+        child: MouseRegion(
+          onEnter: (event) {
+            showOutline = true;
+            setState(() {});
+          },
+          onExit: (event) {
+            showOutline = false;
+            setState(() {});
+          },
+          child: Container(
+            decoration: BoxDecoration(
+              boxShadow: !showOutline
+                  ? null
+                  : [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 3,
+                        blurRadius: 5,
+                        offset: Offset(0, 2), // changes position of shadow
+                      ),
+                    ],
+            ),
+            child: ButtonTheme(
+              padding: EdgeInsets.symmetric(
+                  vertical: 0.0,
+                  horizontal: 0.0), //adds padding inside the button
+              materialTapTargetSize: MaterialTapTargetSize
+                  .shrinkWrap, //limits the touch area to the button area
+              minWidth: 0, //wraps child's width
+              height: 0, //wraps child's height
+              child: FlatButton(
+                onPressed: () => widget.onPressed(context),
+                child: Image(
+                  image: widget.piece.image,
+                  fit: BoxFit.fill,
+                ),
+              ),
             ),
           ),
         ),

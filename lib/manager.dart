@@ -1,6 +1,7 @@
-import 'package:flutter/cupertino.dart' hide Stack;
+import 'package:flutter/material.dart' hide Stack;
 import 'package:web1/constants.dart';
 import 'package:stack/stack.dart';
+import 'package:web1/pages/piece_page.dart';
 import 'models/piece.dart';
 import 'constants.dart';
 import 'models/puzzle.dart';
@@ -13,14 +14,23 @@ enum Pages {
 
 class Manager {
   static Function onPressOnPiece(Piece piece) {
-    return () {};
+    return (context) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => PiecePage(piece: piece),
+        ),
+      );
+    };
     //remember to do Hero animation with the piece
   }
 
   static int getMaxPuzzlesInRow(BoxConstraints constraints) {
     double _width = constraints.widthConstraints().maxWidth;
+    print(_width);
+    print('manager ${(_width / kPuzzleContainerWidth).floor()}');
     //maybe listen for changes??
-    return (_width / kPuzzleCabinetWidthMin).floor();
+    return (_width / kPuzzleContainerWidth).floor();
   }
 
   // static double getSizeOfSinglePuzzle(
@@ -45,6 +55,9 @@ class Manager {
 
   static Stack<Pages> navStack = Stack<Pages>();
   static void moveTo(Pages to, Pages from, BuildContext context) {
+    if (to == from) {
+      return;
+    }
     if (navStack.isNotEmpty && navStack.top() == to) {
       navStack.pop();
       Navigator.pop(context);

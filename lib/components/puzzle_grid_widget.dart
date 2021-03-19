@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:web1/components/puzzle_cabinet.dart';
+import 'package:web1/components/puzzle_container.dart';
 import 'package:web1/constants.dart';
 import 'package:web1/models/puzzle.dart';
 import 'package:web1/manager.dart';
@@ -7,36 +8,48 @@ import 'package:web1/manager.dart';
 class PuzzleGridWidget extends StatelessWidget {
   final List<Puzzle> puzzles = Manager.getDisplayPuzzles();
 
-  Container buildGrid(BoxConstraints constraints) {
+  Column buildGrid(BoxConstraints constraints) {
     List<Widget> columnChildren = [];
     int numInRow = Manager.getMaxPuzzlesInRow(constraints);
+    numInRow = numInRow == 0 ? 1 : numInRow;
+    print(numInRow);
 
     for (int i = 0;
         i < puzzles.length - puzzles.length % numInRow;
         i += numInRow) {
       List<Widget> rowChildren = [];
+
       for (int j = 0; j < numInRow; j++) {
         rowChildren.add(
-          Expanded(
-            child: PuzzleCabinet(
-              puzzle: puzzles[i + j],
-            ),
+          PuzzleCabinet(
+            puzzle: puzzles[i + j],
           ),
         );
       }
+
       columnChildren.add(
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: numInRow == 1
+              ? MainAxisAlignment.center
+              : MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: rowChildren,
         ),
       );
+
+      //////////////////////// FOR THE GAP BETWEEN ROWS!!!
+      columnChildren.add(
+        SizedBox(
+          height: 75.0,
+        ),
+      );
+      ///////////////////////////////////////////////
     }
-    return Container(
-      height: columnChildren.length * kPuzzleCaninetHeightMin,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: columnChildren,
-      ),
+    columnChildren.removeLast();
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: columnChildren,
     );
   }
 
