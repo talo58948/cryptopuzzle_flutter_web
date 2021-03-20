@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:web1/components/puzzle_cabinet.dart';
-import 'package:web1/components/puzzle_container.dart';
-import 'package:web1/constants.dart';
 import 'package:web1/models/puzzle.dart';
 import 'package:web1/manager.dart';
 
@@ -47,7 +45,24 @@ class PuzzleGridWidget extends StatelessWidget {
         );
         ///////////////////////////////////////////////
       }
-      columnChildren.removeLast();
+      if (!(puzzles.length - puzzles.length % numInRow == 0)) {
+        //if after all of the grid building, there are leftover puzzles, insert them
+        List<Widget> rowChildren = [];
+        for (int i = 0; i < puzzles.length % numInRow; i++) {
+          rowChildren.add(
+            PuzzleCabinet(
+              puzzle: puzzles[i + (puzzles.length - puzzles.length % numInRow)],
+            ),
+          );
+        }
+        columnChildren.add(Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: rowChildren,
+        ));
+      } else {
+        columnChildren.removeLast();
+      }
       return Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.stretch,
