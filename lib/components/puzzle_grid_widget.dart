@@ -6,51 +6,59 @@ import 'package:web1/models/puzzle.dart';
 import 'package:web1/manager.dart';
 
 class PuzzleGridWidget extends StatelessWidget {
-  final List<Puzzle> puzzles = Manager.getDisplayPuzzles();
+  final List<Puzzle> puzzles;
 
-  Column buildGrid(BoxConstraints constraints) {
+  PuzzleGridWidget({@required this.puzzles});
+  Widget buildGrid(BoxConstraints constraints) {
     List<Widget> columnChildren = [];
     int numInRow = Manager.getMaxPuzzlesInRow(constraints);
     numInRow = numInRow == 0 ? 1 : numInRow;
     print(numInRow);
 
-    for (int i = 0;
-        i < puzzles.length - puzzles.length % numInRow;
-        i += numInRow) {
-      List<Widget> rowChildren = [];
+    try {
+      for (int i = 0;
+          i < puzzles.length - puzzles.length % numInRow;
+          i += numInRow) {
+        List<Widget> rowChildren = [];
 
-      for (int j = 0; j < numInRow; j++) {
-        rowChildren.add(
-          PuzzleCabinet(
-            puzzle: puzzles[i + j],
+        for (int j = 0; j < numInRow; j++) {
+          rowChildren.add(
+            PuzzleCabinet(
+              puzzle: puzzles[i + j],
+            ),
+          );
+        }
+
+        columnChildren.add(
+          Row(
+            mainAxisAlignment: numInRow == 1
+                ? MainAxisAlignment.center
+                : MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: rowChildren,
           ),
         );
+
+        //////////////////////// FOR THE GAP BETWEEN ROWS!!!
+        columnChildren.add(
+          SizedBox(
+            height: 75.0,
+          ),
+        );
+        ///////////////////////////////////////////////
       }
-
-      columnChildren.add(
-        Row(
-          mainAxisAlignment: numInRow == 1
-              ? MainAxisAlignment.center
-              : MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: rowChildren,
-        ),
+      columnChildren.removeLast();
+      return Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: columnChildren,
       );
-
-      //////////////////////// FOR THE GAP BETWEEN ROWS!!!
-      columnChildren.add(
-        SizedBox(
-          height: 75.0,
-        ),
+    } catch (e) {
+      print(e);
+      return Container(
+        child: Text('Oof'),
       );
-      ///////////////////////////////////////////////
     }
-    columnChildren.removeLast();
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: columnChildren,
-    );
   }
 
   @override

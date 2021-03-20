@@ -3,9 +3,12 @@ import 'package:web1/components/content_container.dart';
 import 'package:web1/components/floating_widget.dart';
 import 'package:web1/components/puzzle_grid.dart';
 import 'package:web1/components/puzzle_grid_widget.dart';
+import 'package:web1/models/puzzle.dart';
 import 'custom_page.dart';
 
 class FeaturedPuzzlesPage extends StatelessWidget {
+  final List<Puzzle> puzzles;
+  FeaturedPuzzlesPage({@required this.puzzles});
   @override
   Widget build(BuildContext context) {
     return CustomPage(
@@ -14,7 +17,11 @@ class FeaturedPuzzlesPage extends StatelessWidget {
           child: ContentContainer(
             // height: 6000,
             // width: 2000,
-            children: [PuzzleGridWidget()],
+            children: [
+              PuzzleGridWidget(
+                puzzles: puzzles,
+              )
+            ],
           ),
         ),
       ),

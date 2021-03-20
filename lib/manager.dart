@@ -5,6 +5,7 @@ import 'package:web1/pages/piece_page.dart';
 import 'models/piece.dart';
 import 'constants.dart';
 import 'models/puzzle.dart';
+import 'networker.dart';
 
 enum Pages {
   about,
@@ -43,14 +44,19 @@ class Manager {
   //   }
   //   return _width;
   // }
+  static Future<List<Puzzle>> getDfltPuzzles() {
+    return Future.delayed(Duration(milliseconds: 500), () {
+      List<Puzzle> puzzles = [];
+      for (int i = 0; i < 20; i++) {
+        puzzles.add(Puzzle.dflt);
+      }
+      return puzzles;
+    });
+  }
 
-  static List<Puzzle> getDisplayPuzzles() {
-    List<Puzzle> li = [];
-    for (int i = 0; i < 14; i++) {
-      li.add(Puzzle.dflt);
-      li.add(Puzzle.dflt2);
-    }
-    return li;
+  static Future<List<Puzzle>> getDisplayPuzzles() {
+    Networker net = Networker();
+    return net.getAllPuzzles();
   }
 
   static Stack<Pages> navStack = Stack<Pages>();
