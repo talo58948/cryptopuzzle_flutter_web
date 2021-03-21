@@ -55,4 +55,41 @@ class Puzzle {
     @required this.name,
     this.ratio = 1.0,
   });
+  static List<Puzzle> getPuzzles(List<Piece> ps) {
+    List<Piece> pieces = [];
+    ps.forEach((piece) {
+      pieces.add(piece);
+    });
+    List<Puzzle> puzzles = [];
+
+    while (pieces.isNotEmpty) {
+      List<Piece> puzzlePieces = _getPuzzlePieces(pieces);
+      _sortPuzzlePieces(puzzlePieces);
+      puzzles.add(Puzzle(
+        puzzlePieces: puzzlePieces,
+        id: puzzlePieces[0].puzzleId,
+        name: puzzlePieces[0].puzzleName,
+        numberOfPieces: puzzlePieces.length,
+        ratio: puzzlePieces[0].ratio,
+      ));
+    }
+    return puzzles;
+  }
+
+  static List<Piece> _getPuzzlePieces(List<Piece> pieces) {
+    var refPiece = pieces[0];
+    List<Piece> matchingPieces = [];
+    for (int i = 0; i < pieces.length; i++) {
+      if (pieces[i].puzzleId == refPiece.puzzleId) {
+        matchingPieces.add(pieces[i]);
+        pieces.remove(pieces[i]);
+        i--;
+      }
+    }
+    return matchingPieces;
+  }
+
+  static void _sortPuzzlePieces(List<Piece> puzzlePieces) {
+    puzzlePieces.sort((a, b) => a.index.compareTo(b.index));
+  }
 }

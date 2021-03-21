@@ -1,13 +1,13 @@
 import 'dart:convert';
 import 'package:http/http.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:web1/constants.dart';
 
 import 'models/piece.dart';
 import 'models/puzzle.dart';
-import 'models/user.dart';
+import 'tester/tester.dart' as tester;
 
 const numOfPieces = 63;
-const contractAddres = '0x7C40c393DC0f283F318791d746d894DdD3693572';
+const contractAddres = kContractAddress;
 Uri uri = Uri.https('api.opensea', '/api/v1/assets', {
   'asset_contract_address': contractAddres,
   'offset': 0,
@@ -52,60 +52,71 @@ class Networker {
     });
   }
 
-  Future<List<Puzzle>> getAllPuzzles() async {
-    return getAllAssets().then(
-      (assets) {
-        List<dynamic> pieces = assets;
-        List<Puzzle> puzzles = [];
-        for (int i = 0; i < pieces.length; i += 9) {
-          List<Piece> puzzlePieces = [];
-          for (int j = 0; j < 9; j++) {
-            var pieceMap = pieces[i + j];
-            print('image_url is: ${pieceMap['image_url']}');
-            puzzlePieces.add(
-              Piece(
-                image: NetworkImage(
-                  pieceMap['image_url'] != null
-                      ? pieceMap['image_url']
-                      : "https://lh3.googleusercontent.com/M5n8x0OnjwHZ2a3Z_pnYenVWhg4mFV5INemsRHuO6OnzoAsplgr8hxFs8YxPqEDi_xShZq-uvNomgxa5b6UOB0wEgTsoOUn-Ewz28A",
-                ),
-                owner: User(
-                  name: pieceMap['asset_contract']['owner'],
-                  id: pieceMap['asset_contract']['owner'],
-                ),
-                owned: pieceMap['asset_contract']['owner'] != null,
-                rarity: Rarity.rare,
-                ratio: 1,
-              ),
-            );
-          }
+  Future<dynamic> getAllAssetsTest() async {
+    return json.decode(tester.p)['assets'];
+  }
+//   Future<List<Puzzle>> getAllPuzzles() async {
+//     return getAllAssets().then(
+//       (assets) {
+//         List<dynamic> pieces = assets;
+//         List<Puzzle> puzzles = [];
+//         for (int i = 0; i < pieces.length; i += 9) {
+//           List<Piece> puzzlePieces = [];
+//           for (int j = 0; j < 9; j++) {
+//             var pieceMap = pieces[i + j];
+//             print('image_url is: ${pieceMap['image_url']}');
+//             puzzlePieces.add(
+//               Piece(
+//                 image: NetworkImage(
+//                   pieceMap['image_url'] != null
+//                       ? pieceMap['image_url']
+//                       : "https://lh3.googleusercontent.com/M5n8x0OnjwHZ2a3Z_pnYenVWhg4mFV5INemsRHuO6OnzoAsplgr8hxFs8YxPqEDi_xShZq-uvNomgxa5b6UOB0wEgTsoOUn-Ewz28A",
+//                 ),
+//                 owner: User(
+//                   name: pieceMap['asset_contract']['owner'],
+//                 ),
+//                 owned: pieceMap['asset_contract']['owner'] != null,
+//                 rarity: Rarity.rare,
+//                 ratio: 1,
+//               ),
+//             );
+//           }
 
-          puzzles.add(
-            Puzzle(
-              id: '#8552',
-              puzzlePieces: puzzlePieces,
-              numberOfPieces: 9,
-              name: 'LOL N',
-              ratio: 1.0,
-            ),
-          );
-        }
-        return puzzles;
-      },
-    ).catchError(
-      (e) {
-        print('ERROR PARSING PUZZLES\n $e');
-      },
-    );
+//           puzzles.add(
+//             Puzzle(
+//               id: '#8552',
+//               puzzlePieces: puzzlePieces,
+//               numberOfPieces: 9,
+//               name: 'LOL N',
+//               ratio: 1.0,
+//             ),
+//           );
+//         }
+//         return puzzles;
+//       },
+//     ).catchError(
+//       (e) {
+//         print('ERROR PARSING PUZZLES\n $e');
+//       },
+//     );
+//   }
+// }
+  Future<List<Puzzle>> getAllPuzzles() async {
+    return getAllAssetsTest().then((assets) {
+      List<dynamic> piecesJson = assets;
+      List<Piece> pieces = [];
+      piecesJson.forEach((pieceJson) {
+        pieces.add(Piece.fromJson(pieceJson));
+      });
+      return Puzzle.getPuzzles(pieces);
+    });
   }
 }
 
 void main() async {
   Networker networker = Networker();
-  print('hom');
+  print('home');
   networker.getAllAssets().then((assets) {
     print(assets.length);
   });
-
-  print('homo');
 }

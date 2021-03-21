@@ -3,6 +3,7 @@ import 'package:web1/manager.dart';
 import 'package:web1/pages/about_page.dart';
 import 'package:web1/pages/loading_page.dart';
 import 'pages/featured_puzzles_page.dart';
+import 'tester/tester.dart';
 
 void main() {
   runApp(App());
