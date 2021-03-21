@@ -10,30 +10,47 @@ class Navbar extends StatelessWidget {
     Widget buildBar() {
       List<Widget> titles = [];
       Pages.values.forEach((element) {
-        titles.add(
-          // ignore: deprecated_member_use
-          FlatButton(
-            splashColor: Colors.grey[900],
-            onPressed: () => Manager.moveTo(element, page, context),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 20.0,
-                vertical: 22.5,
-              ),
-              child: Text(
-                element.toString().toUpperCase().replaceAll('PAGES.', ''),
-                style: kNavbarTitlesStyle,
-                textAlign: TextAlign.center,
+        if (element != Pages.piece) {
+          titles.add(
+            // ignore: deprecated_member_use
+            FlatButton(
+              splashColor: Colors.grey[900],
+              onPressed: () => Manager.moveTo(element, context, from: page),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20.0,
+                  vertical: 22.5,
+                ),
+                child: element == Pages.home
+                    ? Text(
+                        'PuzzleTokens',
+                        style: kNavbarTitlesStyle.copyWith(
+                          fontFamily: 'Share-Bold.ttf',
+                          height: 1.0,
+                          fontSize: 25.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        textAlign: TextAlign.center,
+                      )
+                    : Text(
+                        element
+                            .toString()
+                            .toLowerCase()
+                            .replaceAll('pages.', '')
+                            .capitalize(),
+                        style: kNavbarTitlesStyle,
+                        textAlign: TextAlign.center,
+                      ),
               ),
             ),
-          ),
-        );
-        titles.add(
-          VerticalDivider(
-            thickness: 10.0,
-            color: Colors.white,
-          ),
-        );
+          );
+          titles.add(
+            VerticalDivider(
+              thickness: 10.0,
+              color: Colors.white,
+            ),
+          );
+        }
       });
       try {
         return Row(
@@ -53,5 +70,11 @@ class Navbar extends StatelessWidget {
         child: buildBar(),
       ),
     );
+  }
+}
+
+extension StringExtension on String {
+  String capitalize() {
+    return "${this[0].toUpperCase()}${this.substring(1)}";
   }
 }

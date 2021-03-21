@@ -5,6 +5,7 @@ import 'package:web1/pages/custom_page.dart';
 import 'package:web1/pages/featured_puzzles_page.dart';
 
 class LoadingPage extends StatelessWidget {
+  static const routeName = '/loading';
   final Future future;
   final Function then;
   LoadingPage({@required this.future, @required this.then});

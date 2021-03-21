@@ -6,30 +6,47 @@ import 'package:web1/constants.dart';
 import 'package:web1/models/piece.dart';
 import 'package:web1/pages/custom_page.dart';
 
-class PiecePage extends StatelessWidget {
+import '../manager.dart';
+
+class PiecePageArgs {
   final Piece piece;
-  PiecePage({@required this.piece});
+  PiecePageArgs(this.piece);
+}
+
+class PiecePage extends StatelessWidget {
+  static const routeName = '/piece';
+  PiecePage();
   @override
   Widget build(BuildContext context) {
+    final PiecePageArgs args = ModalRoute.of(context).settings.arguments;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (args == null) {
+        Manager.moveTo(Pages.home, context);
+      }
+    });
+
+    final Piece piece = args != null ? args.piece : null;
     return CustomPage(
-      child: ContentContainer(
-        children: [
-          Text(
-            piece.owned ? 'OWNED BY: ${piece.owner.name}' : 'UP FOR SALE',
-            style: kTitleStyle,
-          ),
-          SizedBox(
-            height: 50,
-          ),
-          PieceWidget(
-            piece: piece,
-          ),
-          SizedBox(
-            height: 50,
-          ),
-          TransactionHistory(),
-        ],
-      ),
+      child: args == null
+          ? Container()
+          : ContentContainer(
+              children: [
+                Text(
+                  piece.owned ? 'OWNED BY: ${piece.owner.name}' : 'UP FOR SALE',
+                  style: kTitleStyle,
+                ),
+                SizedBox(
+                  height: 50,
+                ),
+                PieceWidget(
+                  piece: piece,
+                ),
+                SizedBox(
+                  height: 50,
+                ),
+                TransactionHistory(),
+              ],
+            ),
     );
   }
 }

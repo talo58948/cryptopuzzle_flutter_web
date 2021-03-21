@@ -50,6 +50,8 @@ flutter:
   assets:
     - images/
     - fonts/RobotoCondensed-Light.ttf
+    - fonts/Coda-Regular.ttf
+    - fonts/Share-Bold.ttf
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

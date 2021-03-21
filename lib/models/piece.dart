@@ -17,6 +17,7 @@ class Piece {
 
   final double ethPrice;
   final double usdPrice;
+  final String permalink;
 
   static const Piece dflt = Piece(
     image: AssetImage('images/piece2.png'),
@@ -24,6 +25,8 @@ class Piece {
     owned: false,
     ratio: 1.0,
     rarity: Rarity.rare,
+    permalink:
+        "https://www.youtube.com/watch?v=SsW4npZ0bDk&ab_channel=penguinz0",
   );
   const Piece({
     @required this.image,
@@ -37,6 +40,7 @@ class Piece {
     this.length,
     this.ethPrice = 0,
     this.usdPrice = 0,
+    @required this.permalink,
   });
 
   Piece.fromJson(Map<String, dynamic> json)
@@ -52,7 +56,8 @@ class Piece {
         ethPrice = double.parse(
             json['sell_orders']['payment_token_contract']['eth_price']),
         usdPrice = double.parse(
-            json['sell_orders']['payment_token_contract']['usd_price']);
+            json['sell_orders']['payment_token_contract']['usd_price']),
+        permalink = json['permalink'];
 }
 
 double _widthHeightRatioFromString(String string) {

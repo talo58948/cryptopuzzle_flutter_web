@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart' hide Stack;
 import 'package:web1/constants.dart';
 import 'package:stack/stack.dart';
+import 'package:web1/pages/about_page.dart';
+import 'package:web1/pages/featured_puzzles_page.dart';
+import 'package:web1/pages/home_page.dart';
 import 'package:web1/pages/piece_page.dart';
 import 'models/piece.dart';
 import 'constants.dart';
@@ -8,21 +11,17 @@ import 'models/puzzle.dart';
 import 'networker.dart';
 
 enum Pages {
-  about,
+  home,
   featured,
+  about,
+  piece,
 }
 // const Map<Pages, Route> routes;
 
 class Manager {
   static Function onPressOnPiece(Piece piece) {
-    return (context) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => PiecePage(piece: piece),
-        ),
-      );
-    };
+    return (context) => moveTo(Pages.piece, context,
+        from: Pages.featured, args: PiecePageArgs(piece));
     //remember to do Hero animation with the piece
   }
 
@@ -60,8 +59,9 @@ class Manager {
   }
 
   static Stack<Pages> navStack = Stack<Pages>();
-  static void moveTo(Pages to, Pages from, BuildContext context) {
-    if (to == from) {
+  static void moveTo(Pages to, BuildContext context,
+      {Pages from, PiecePageArgs args}) {
+    if (from != null && to == from) {
       return;
     }
     if (navStack.isNotEmpty && navStack.top() == to) {
@@ -70,13 +70,24 @@ class Manager {
     } else {
       switch (to) {
         case Pages.featured:
-          Navigator.pushNamed(context, '/featured-puzzles');
+          Navigator.pushNamed(context, FeaturedPuzzlesPage.routeName);
+          break;
+        case Pages.home:
+          Navigator.pushNamed(context, HomePage.routeName);
           break;
         case Pages.about:
-          Navigator.pushNamed(context, '/');
+          Navigator.pushNamed(context, AboutPage.routeName);
           break;
+        case Pages.piece:
+          Navigator.pushNamed(
+            context,
+            PiecePage.routeName,
+            arguments: args,
+          );
       }
-      navStack.push(from);
+      if (from != null) {
+        navStack.push(from);
+      }
     }
   }
 

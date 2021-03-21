@@ -12,7 +12,7 @@ class PieceWidget extends StatelessWidget {
       child: Center(
         child: Image(
           image: piece.image,
-          fit: BoxFit.cover,
+          fit: BoxFit.fitWidth,
         ),
       ),
     );

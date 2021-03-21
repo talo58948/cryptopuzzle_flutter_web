@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:web1/manager.dart';
 import 'package:web1/pages/about_page.dart';
+import 'package:web1/pages/home_page.dart';
 import 'package:web1/pages/loading_page.dart';
+import 'package:web1/pages/piece_page.dart';
 import 'pages/featured_puzzles_page.dart';
 import 'tester/tester.dart';
 
@@ -16,8 +18,8 @@ class App extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
-        '/': (context) => AboutPage(),
-        '/featured-puzzles': (context) => LoadingPage(
+        HomePage.routeName: (context) => HomePage(),
+        FeaturedPuzzlesPage.routeName: (context) => LoadingPage(
               future: Manager.getDisplayPuzzles(),
               then: (puzzles) => Navigator.push(
                 context,
@@ -28,6 +30,8 @@ class App extends StatelessWidget {
                 ),
               ),
             ),
+        AboutPage.routeName: (context) => AboutPage(),
+        PiecePage.routeName: (context) => PiecePage()
       },
     );
   }

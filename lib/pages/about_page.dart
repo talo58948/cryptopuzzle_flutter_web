@@ -6,6 +6,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'custom_page.dart';
 
 class AboutPage extends StatelessWidget {
+  static const routeName = '/about';
   @override
   Widget build(BuildContext context) {
     return CustomPage(
