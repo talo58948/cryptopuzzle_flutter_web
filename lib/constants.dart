@@ -63,5 +63,6 @@ const kPriceTextStyle = TextStyle(
   wordSpacing: 6.0,
   fontSize: 18.0,
   height: 1.6,
+  fontWeight: FontWeight.bold,
   fontFamily: 'Roboto',
 );

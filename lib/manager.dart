@@ -114,11 +114,9 @@ class Manager {
     Pages from,
     dynamic args,
   }) {
-    // print('FROM: $from\nTO: $to\n');
-    print('FEATURED NAME IS\n${pageRouteMap[Pages.featured]}');
-    print('\n\nSTART stack is:\n');
+    // print('FROM: $from\nTO: $to\n')
+    print('STACK START:\n');
     _printAllStack(prevRoutes);
-
     if (to == from) {
       return;
     }
@@ -153,11 +151,12 @@ class Manager {
       default:
     }
 
-    print('\n\nEND stack is:\n');
+    print('STACK END:\n');
     _printAllStack(prevRoutes);
   }
 
   static void onPressedOnFAB() {}
+  // ignore: unused_element
   static void _printAllStack(Stack stack) {
     Stack temp = Stack();
     int count = 0;

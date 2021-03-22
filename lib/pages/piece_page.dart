@@ -31,7 +31,9 @@ class PiecePage extends StatelessWidget {
     return CustomPage(
       page: Pages.piece,
       child: args == null
-          ? Container()
+          ? Container(
+              child: Text('Failed to load piece :/'),
+            )
           : ContentContainer(
               children: [
                 Text(
@@ -39,14 +41,17 @@ class PiecePage extends StatelessWidget {
                   style: kTitleStyle,
                 ),
                 SizedBox(
-                  height: 50,
+                  height: 50.0,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     PieceWidget(
                       piece: piece,
+                    ),
+                    SizedBox(
+                      width: 25.0,
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -56,7 +61,7 @@ class PiecePage extends StatelessWidget {
                         ),
                         Container(
                           child: Text(
-                            'Ξ ${piece.ethPrice}',
+                            'Ξ ${piece.ethPrice.toStringAsFixed(2)}',
                             style: kPriceTextStyle,
                           ),
                         ),
@@ -65,7 +70,7 @@ class PiecePage extends StatelessWidget {
                         ),
                         Container(
                           child: Text(
-                            '\$ ${piece.usdPrice}',
+                            '\$ ${piece.usdPrice.toStringAsFixed(2)}',
                             style: kPriceTextStyle,
                           ),
                         ),
