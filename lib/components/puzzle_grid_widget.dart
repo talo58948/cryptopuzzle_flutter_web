@@ -8,18 +8,21 @@ class PuzzleGridWidget extends StatelessWidget {
 
   PuzzleGridWidget({@required this.puzzles});
   Widget buildGrid(BoxConstraints constraints) {
-    List<Widget> columnChildren = [];
-    int numInRow = Manager.getMaxPuzzlesInRow(constraints);
-    numInRow = numInRow == 0 ? 1 : numInRow;
-    print(numInRow);
-
     try {
+      List<Widget> columnChildren = [];
+      int numInRow = Manager.getMaxPuzzlesInRow(constraints);
+      numInRow = numInRow == 0 ? 1 : numInRow;
+      print(numInRow);
+      print('\n\n\n');
+      // try {
       for (int i = 0;
           i < puzzles.length - puzzles.length % numInRow;
           i += numInRow) {
         List<Widget> rowChildren = [];
+        print('$i\n');
 
         for (int j = 0; j < numInRow; j++) {
+          print('$j\n');
           rowChildren.add(
             PuzzleCabinet(
               puzzle: puzzles[i + j],
@@ -45,13 +48,14 @@ class PuzzleGridWidget extends StatelessWidget {
         );
         ///////////////////////////////////////////////
       }
-      if (!(puzzles.length - puzzles.length % numInRow == 0)) {
+      if (puzzles.length % numInRow != 0) {
         //if after all of the grid building, there are leftover puzzles, insert them
         List<Widget> rowChildren = [];
         for (int i = 0; i < puzzles.length % numInRow; i++) {
           rowChildren.add(
             PuzzleCabinet(
-              puzzle: puzzles[i + (puzzles.length - puzzles.length % numInRow)],
+              puzzle:
+                  puzzles[i + (numInRow * (puzzles.length / numInRow).floor())],
             ),
           );
         }
@@ -62,6 +66,7 @@ class PuzzleGridWidget extends StatelessWidget {
         ));
       } else {
         columnChildren.removeLast();
+        print('h');
       }
       return Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -69,7 +74,7 @@ class PuzzleGridWidget extends StatelessWidget {
         children: columnChildren,
       );
     } catch (e) {
-      print(e);
+      print('error in puzzle grid widget$e');
       return Container(
         child: Text('Oof'),
       );

@@ -35,18 +35,19 @@ class _FeaturedPuzzlesPageState extends State<FeaturedPuzzlesPage> {
     args = ModalRoute.of(context).settings.arguments;
     WidgetsBinding.instance.addPostFrameCallback(
       (_) {
+        print('gg');
+        print('args $args');
         if (args != null) {
           print('l');
-          args.futurePuzzles
-              .then(
-            (puzzles) => setState(
-              () {
-                puzzles = puzzles;
-                inAsync = false;
-              },
-            ),
-          )
-              .catchError((e) {
+          args.futurePuzzles.then(
+            (puzzles) {
+              print('p');
+              puzzles = puzzles;
+              print('puzzles ${puzzles.length}');
+              inAsync = false;
+              setState(() {});
+            },
+          ).catchError((e) {
             print('ERROR ON FEATURED');
           });
         } else {}

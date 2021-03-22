@@ -31,7 +31,7 @@ class Manager {
     Navigator.pushNamed(
       context,
       FeaturedPuzzlesPage.routeName,
-      arguments: Manager.getDisplayPuzzles(),
+      arguments: FeaturedPuzzlesPageArgs(Manager.getDisplayPuzzles()),
     );
   }
 
@@ -151,7 +151,7 @@ class Manager {
         Navigator.pushNamed(context, AboutPage.routeName);
         break;
       case Pages.featured:
-        Navigator.pushNamed(context, FeaturedPuzzlesPage.routeName);
+        Manager.moveToFeatured(context);
         break;
       case Pages.piece:
         Navigator.pushNamed(context, PiecePage.routeName, arguments: args);
