@@ -13,6 +13,7 @@ class LoadingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomPage(
+      showNavbar: false,
       page: Pages.loading,
       showFooter: false,
       child: Container(

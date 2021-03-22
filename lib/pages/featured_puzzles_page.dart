@@ -40,17 +40,20 @@ class _FeaturedPuzzlesPageState extends State<FeaturedPuzzlesPage> {
         if (args != null) {
           print('l');
           args.futurePuzzles.then(
-            (puzzles) {
+            (puzzlesList) {
               print('p');
-              puzzles = puzzles;
-              print('puzzles ${puzzles.length}');
-              inAsync = false;
-              setState(() {});
+              print('puzzles ${puzzlesList.length}');
+              setState(() {
+                puzzles = puzzlesList;
+                inAsync = false;
+              });
             },
           ).catchError((e) {
             print('ERROR ON FEATURED');
           });
-        } else {}
+        } else {
+          Manager.moveTo(Pages.home, context);
+        }
       },
     );
     return inAsync

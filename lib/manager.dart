@@ -128,7 +128,7 @@ class Manager {
     if (to == from) {
       return;
     }
-    if (prevRoutes.isEmpty) {
+    if (prevRoutes.isEmpty && from != Pages.loading) {
       prevRoutes.push(from);
     }
     if (prevRoutes.isNotEmpty) {

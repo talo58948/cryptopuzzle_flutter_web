@@ -8,13 +8,14 @@ class PuzzleGridWidget extends StatelessWidget {
 
   PuzzleGridWidget({@required this.puzzles});
   Widget buildGrid(BoxConstraints constraints) {
+    // try {
+    List<Widget> columnChildren = [];
+    int numInRow = Manager.getMaxPuzzlesInRow(constraints);
+    numInRow = numInRow == 0 ? 1 : numInRow;
+    print(numInRow);
+    print(puzzles.length);
+    print('${puzzles.length - (puzzles.length % numInRow)}');
     try {
-      List<Widget> columnChildren = [];
-      int numInRow = Manager.getMaxPuzzlesInRow(constraints);
-      numInRow = numInRow == 0 ? 1 : numInRow;
-      print(numInRow);
-      print('\n\n\n');
-      // try {
       for (int i = 0;
           i < puzzles.length - puzzles.length % numInRow;
           i += numInRow) {

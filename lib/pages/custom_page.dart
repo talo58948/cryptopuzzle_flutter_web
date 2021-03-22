@@ -10,8 +10,12 @@ class CustomPage extends StatelessWidget {
   final Widget child;
   final bool showFooter;
   final Pages page;
+  final bool showNavbar;
   CustomPage(
-      {@required this.child, this.showFooter = true, @required this.page});
+      {@required this.child,
+      this.showFooter = true,
+      @required this.page,
+      this.showNavbar = true});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,9 +28,13 @@ class CustomPage extends StatelessWidget {
       // ),
       body: Column(
         children: [
-          Navbar(
-            page: page,
-          ),
+          showNavbar
+              ? Navbar(
+                  page: page,
+                )
+              : SizedBox(
+                  height: 0.0,
+                ),
           Expanded(
             child: !showFooter
                 ? SingleChildScrollView(
