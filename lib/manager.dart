@@ -47,8 +47,6 @@ class Manager {
 
   static int getMaxPuzzlesInRow(BoxConstraints constraints) {
     double _width = constraints.widthConstraints().maxWidth;
-    print(_width);
-    print('manager ${(_width / kPuzzleContainerWidth).floor()}');
     //maybe listen for changes??
     return (_width / kPuzzleContainerWidth).floor();
   }
@@ -79,43 +77,8 @@ class Manager {
   }
 
   static Stack<Pages> navStack = Stack<Pages>();
-  // static void moveTo(Pages to, BuildContext context,
-  //     {Pages from, PiecePageArgs args}) {
-  //   if ((from != null && to == from) || to == Pages.loading) {
-  //     return;
-  //   }
-  //   if (navStack.isNotEmpty && navStack.top() == to) {
-  //     navStack.pop();
-  //     Navigator.pop(context);
-  //   } else {
-  //     switch (to) {
-  //       case Pages.featured:
-  //         Navigator.pushNamed(context, FeaturedPuzzlesPage.routeName);
-  //         break;
-  //       case Pages.home:
-  //         Navigator.pushNamed(context, HomePage.routeName);
-  //         break;
-  //       case Pages.about:
-  //         Navigator.pushNamed(context, AboutPage.routeName);
-  //         break;
-  //       case Pages.piece:
-  //         Navigator.pushNamed(
-  //           context,
-  //           PiecePage.routeName,
-  //           arguments: args,
-  //         );
-  //         break;
-  //       default:
-  //         break;
-  //     }
-  //     if (from != null) {
-  //       navStack.push(from);
-  //     }
-  //     print(navStack.top() != null ? navStack.top() : 'null');
-  //   }
-  // }
 
-  static Stack<Pages> prevRoutes = new Stack<Pages>();
+  static Stack<Pages> _prevRoutes = new Stack<Pages>();
   static void moveTo(
     Pages to,
     BuildContext context, {
@@ -123,26 +86,17 @@ class Manager {
     dynamic args,
   }) {
     // print('FROM: $from\nTO: $to\n')
-    print('STACK START:\n');
-    _printAllStack(prevRoutes);
     if (to == from) {
       return;
     }
-    if (prevRoutes.isEmpty && from != Pages.loading) {
-      prevRoutes.push(from);
-    }
-    if (prevRoutes.isNotEmpty) {
-      if (prevRoutes.contains(to)) {
-        while (prevRoutes.top() != to) {
-          prevRoutes.pop();
-        }
+    if (_prevRoutes.isNotEmpty) {
+      if (_prevRoutes.contains(to)) {
         Navigator.popUntil(context, (route) {
           return route.settings.name == pageRouteMap[to];
         });
         return;
       }
     }
-    prevRoutes.push(to);
     switch (to) {
       case Pages.home:
         Navigator.pushNamed(context, HomePage.routeName);
@@ -158,10 +112,11 @@ class Manager {
         break;
       default:
     }
-
-    print('STACK END:\n');
-    _printAllStack(prevRoutes);
   }
+
+  static void onNavPop() => _prevRoutes.pop();
+
+  static void onNavPush(Pages page) => _prevRoutes.push(page);
 
   static void onPressedOnFAB() {}
   // ignore: unused_element

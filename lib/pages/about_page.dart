@@ -38,7 +38,7 @@ class AboutPage extends StatelessWidget {
             ],
           ),
           Image(
-            image: AssetImage('images/punk-variety-2x.png'),
+            image: AssetImage('images/puzzle1cover.png'),
             fit: BoxFit.fill,
           ),
           ContentContainer(

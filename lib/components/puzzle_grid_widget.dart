@@ -12,18 +12,13 @@ class PuzzleGridWidget extends StatelessWidget {
     List<Widget> columnChildren = [];
     int numInRow = Manager.getMaxPuzzlesInRow(constraints);
     numInRow = numInRow == 0 ? 1 : numInRow;
-    print(numInRow);
-    print(puzzles.length);
-    print('${puzzles.length - (puzzles.length % numInRow)}');
     try {
       for (int i = 0;
           i < puzzles.length - puzzles.length % numInRow;
           i += numInRow) {
         List<Widget> rowChildren = [];
-        print('$i\n');
 
         for (int j = 0; j < numInRow; j++) {
-          print('$j\n');
           rowChildren.add(
             PuzzleCabinet(
               puzzle: puzzles[i + j],
@@ -67,7 +62,6 @@ class PuzzleGridWidget extends StatelessWidget {
         ));
       } else {
         columnChildren.removeLast();
-        print('h');
       }
       return Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

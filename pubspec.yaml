@@ -75,6 +75,13 @@ flutter:
     - family: MyFlutterApp
       fonts:
         - asset: fonts/MyFlutterApp.ttf
+    - family: Archivo
+      fonts:
+        - asset: fonts/ArchivoBlack-Regular.ttf
+    - family: Open
+      fonts:
+        - asset: fonts/OpenSansCondensed-Bold.ttf
+
   #   - family: Schyler
   # fonts:
   #   - asset: fonts/Schyler-Regular.ttf

@@ -10,7 +10,9 @@ class Navbar extends StatelessWidget {
     Widget buildBar() {
       List<Widget> titles = [];
       Pages.values.forEach((element) {
-        if (element != Pages.piece && element != Pages.loading) {
+        if (element != Pages.piece &&
+            element != Pages.loading &&
+            element != Pages.about) {
           titles.add(
             // ignore: deprecated_member_use
             FlatButton(
@@ -65,7 +67,7 @@ class Navbar extends StatelessWidget {
     }
 
     return Container(
-      color: kSecondaryColor,
+      color: kNavColor,
       child: Center(
         child: buildBar(),
       ),

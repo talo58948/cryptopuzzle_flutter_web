@@ -35,14 +35,9 @@ class _FeaturedPuzzlesPageState extends State<FeaturedPuzzlesPage> {
     args = ModalRoute.of(context).settings.arguments;
     WidgetsBinding.instance.addPostFrameCallback(
       (_) {
-        print('gg');
-        print('args $args');
         if (args != null) {
-          print('l');
           args.futurePuzzles.then(
             (puzzlesList) {
-              print('p');
-              print('puzzles ${puzzlesList.length}');
               setState(() {
                 puzzles = puzzlesList;
                 inAsync = false;

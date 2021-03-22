@@ -9,10 +9,11 @@ class PieceWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: kFocusedPieceWidth,
+      height: kFocusedPieceWidth * piece.ratio,
       child: Center(
         child: Image(
           image: piece.image,
-          fit: BoxFit.fitWidth,
+          fit: BoxFit.fill,
         ),
       ),
     );
