@@ -3,6 +3,7 @@ import 'package:web1/components/content_container.dart';
 import 'package:web1/components/floating_widget.dart';
 import 'package:web1/components/puzzle_grid_widget.dart';
 import 'package:web1/models/puzzle.dart';
+import 'package:web1/pages/loading_page.dart';
 import '../manager.dart';
 import 'custom_page.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
@@ -51,25 +52,24 @@ class _FeaturedPuzzlesPageState extends State<FeaturedPuzzlesPage> {
         } else {}
       },
     );
-    return ModalProgressHUD(
-      inAsyncCall: true,
-      child: CustomPage(
-        page: Pages.featured,
-        child: Center(
-          child: SingleChildScrollView(
-            child: ContentContainer(
-              // height: 6000,
-              // width: 2000,
-              children: [
-                PuzzleGridWidget(
-                  puzzles: puzzles,
-                )
-              ],
+    return inAsync
+        ? LoadingPage()
+        : CustomPage(
+            page: Pages.featured,
+            child: Center(
+              child: SingleChildScrollView(
+                child: ContentContainer(
+                  // height: 6000,
+                  // width: 2000,
+                  children: [
+                    PuzzleGridWidget(
+                      puzzles: puzzles,
+                    )
+                  ],
+                ),
+              ),
             ),
-          ),
-        ),
-      ),
-    );
+          );
   }
 }
 

@@ -8,13 +8,10 @@ import '../manager.dart';
 
 class LoadingPage extends StatelessWidget {
   static const routeName = '/loading';
-  final Future future;
-  final Function then;
-  LoadingPage({@required this.future, @required this.then});
+  LoadingPage();
 
   @override
   Widget build(BuildContext context) {
-    future.then((values) => then(values));
     return CustomPage(
       page: Pages.loading,
       showFooter: false,
