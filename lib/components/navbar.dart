@@ -25,7 +25,7 @@ class Navbar extends StatelessWidget {
                     ? Text(
                         'PuzzleTokens',
                         style: kNavbarTitlesStyle.copyWith(
-                          fontFamily: 'Share-Bold.ttf',
+                          fontFamily: 'Coda',
                           height: 1.0,
                           fontSize: 25.0,
                           fontWeight: FontWeight.bold,

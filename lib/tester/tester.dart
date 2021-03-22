@@ -50,9 +50,11 @@ const p = '''{
                 },
                 "address":"0xcontactaddress"
           },
-          "sell_orders":{"payment_token_contract":{"eth_price": "1.01","usd_price":"1762.2"}}
+          "sell_orders":{"payment_token_contract":{"eth_price": "1.01","usd_price":"1762.2"}},
+          "permalink" :"https://www.youtube.com/watch?v=sAXZbfLzJUg&ab_channel=sethandthecrew"
        },
        {
+           
           "image_url":"https://lh3.googleusercontent.com/8O6-2qoV1lVZggyEZGc9GfKvjuvDPW9UMeG2AUnmG8w-W8pQOInUQyaj31dPhskcSLtLdER7cHmLAZnR9KqJzXpDv4Gi8CNXOLmc9Fo",
           "traits":{
              "puzzle_id":"p1",
@@ -69,7 +71,9 @@ const p = '''{
                 },
                 "address":"0xcontactaddress"
           },
-          "sell_orders":{"payment_token_contract":{"eth_price": "1.01","usd_price":"1762.2"}}
+          "sell_orders":{"payment_token_contract":{"eth_price": "1.01","usd_price":"1762.2"}},
+          "permalink" :"https://www.youtube.com/watch?v=sAXZbfLzJUg&ab_channel=sethandthecrew"
+
        },
        {
           "image_url":"https://lh3.googleusercontent.com/8O6-2qoV1lVZggyEZGc9GfKvjuvDPW9UMeG2AUnmG8w-W8pQOInUQyaj31dPhskcSLtLdER7cHmLAZnR9KqJzXpDv4Gi8CNXOLmc9Fo",
@@ -87,7 +91,8 @@ const p = '''{
                 },
                 "address":"0xcontactaddress"
           },
-          "sell_orders":{"payment_token_contract":{"eth_price": "1.01","usd_price":"1762.2"}}
+          "sell_orders":{"payment_token_contract":{"eth_price": "1.01","usd_price":"1762.2"}},
+          "permalink" :"https://www.youtube.com/watch?v=sAXZbfLzJUg&ab_channel=sethandthecrew"
        },
        {
           "image_url":"https://lh3.googleusercontent.com/8O6-2qoV1lVZggyEZGc9GfKvjuvDPW9UMeG2AUnmG8w-W8pQOInUQyaj31dPhskcSLtLdER7cHmLAZnR9KqJzXpDv4Gi8CNXOLmc9Fo",
@@ -105,7 +110,8 @@ const p = '''{
                 },
                 "address":"0xcontactaddress"
           },
-          "sell_orders":{"payment_token_contract":{"eth_price": "1.01","usd_price":"1762.2"}}
+          "sell_orders":{"payment_token_contract":{"eth_price": "1.01","usd_price":"1762.2"}},
+          "permalink" :"https://www.youtube.com/watch?v=sAXZbfLzJUg&ab_channel=sethandthecrew"
        },
        {
           "image_url":"https://lh3.googleusercontent.com/8O6-2qoV1lVZggyEZGc9GfKvjuvDPW9UMeG2AUnmG8w-W8pQOInUQyaj31dPhskcSLtLdER7cHmLAZnR9KqJzXpDv4Gi8CNXOLmc9Fo",
@@ -123,7 +129,8 @@ const p = '''{
                 },
                 "address":"0xcontactaddress"
           },
-          "sell_orders":{"payment_token_contract":{"eth_price": "1.01","usd_price":"1762.2"}}
+          "sell_orders":{"payment_token_contract":{"eth_price": "1.01","usd_price":"1762.2"}},
+          "permalink" :"https://www.youtube.com/watch?v=sAXZbfLzJUg&ab_channel=sethandthecrew"
        },
        {
           "image_url":"https://lh3.googleusercontent.com/8O6-2qoV1lVZggyEZGc9GfKvjuvDPW9UMeG2AUnmG8w-W8pQOInUQyaj31dPhskcSLtLdER7cHmLAZnR9KqJzXpDv4Gi8CNXOLmc9Fo",
@@ -141,7 +148,8 @@ const p = '''{
                 },
                 "address":"0xcontactaddress"
           },
-          "sell_orders":{"payment_token_contract":{"eth_price": "1.01","usd_price":"1762.2"}}
+          "sell_orders":{"payment_token_contract":{"eth_price": "1.01","usd_price":"1762.2"}},
+          "permalink" :"https://www.youtube.com/watch?v=sAXZbfLzJUg&ab_channel=sethandthecrew"
        },
        {
           "image_url":"https://lh3.googleusercontent.com/8O6-2qoV1lVZggyEZGc9GfKvjuvDPW9UMeG2AUnmG8w-W8pQOInUQyaj31dPhskcSLtLdER7cHmLAZnR9KqJzXpDv4Gi8CNXOLmc9Fo",
@@ -159,7 +167,8 @@ const p = '''{
                 },
                 "address":"0xcontactaddress"
           },
-          "sell_orders":{"payment_token_contract":{"eth_price": "1.01","usd_price":"1762.2"}}
+          "sell_orders":{"payment_token_contract":{"eth_price": "1.01","usd_price":"1762.2"}},
+          "permalink" :"https://www.youtube.com/watch?v=sAXZbfLzJUg&ab_channel=sethandthecrew"
        },
        {
           "image_url":"https://lh3.googleusercontent.com/8O6-2qoV1lVZggyEZGc9GfKvjuvDPW9UMeG2AUnmG8w-W8pQOInUQyaj31dPhskcSLtLdER7cHmLAZnR9KqJzXpDv4Gi8CNXOLmc9Fo",
@@ -177,7 +186,8 @@ const p = '''{
                 },
                 "address":"0xcontactaddress"
           },
-          "sell_orders":{"payment_token_contract":{"eth_price": "1.01","usd_price":"1762.2"}}
+          "sell_orders":{"payment_token_contract":{"eth_price": "1.01","usd_price":"1762.2"}},
+          "permalink" :"https://www.youtube.com/watch?v=sAXZbfLzJUg&ab_channel=sethandthecrew"
        },
        {
           "image_url":"https://lh3.googleusercontent.com/8O6-2qoV1lVZggyEZGc9GfKvjuvDPW9UMeG2AUnmG8w-W8pQOInUQyaj31dPhskcSLtLdER7cHmLAZnR9KqJzXpDv4Gi8CNXOLmc9Fo",
@@ -195,7 +205,8 @@ const p = '''{
                 },
                 "address":"0xcontactaddress"
           },
-          "sell_orders":{"payment_token_contract":{"eth_price": "1.01","usd_price":"1762.2"}}
+          "sell_orders":{"payment_token_contract":{"eth_price": "1.01","usd_price":"1762.2"}},
+          "permalink" :"https://www.youtube.com/watch?v=sAXZbfLzJUg&ab_channel=sethandthecrew"
        },
        {
           "image_url":"https://lh3.googleusercontent.com/8O6-2qoV1lVZggyEZGc9GfKvjuvDPW9UMeG2AUnmG8w-W8pQOInUQyaj31dPhskcSLtLdER7cHmLAZnR9KqJzXpDv4Gi8CNXOLmc9Fo",
@@ -213,7 +224,8 @@ const p = '''{
                 },
                 "address":"0xcontactaddress"
           },
-          "sell_orders":{"payment_token_contract":{"eth_price": "1.01","usd_price":"1762.2"}}
+          "sell_orders":{"payment_token_contract":{"eth_price": "1.01","usd_price":"1762.2"}},
+          "permalink" :"https://www.youtube.com/watch?v=sAXZbfLzJUg&ab_channel=sethandthecrew"
        },
        {
           "image_url":"https://lh3.googleusercontent.com/8O6-2qoV1lVZggyEZGc9GfKvjuvDPW9UMeG2AUnmG8w-W8pQOInUQyaj31dPhskcSLtLdER7cHmLAZnR9KqJzXpDv4Gi8CNXOLmc9Fo",
@@ -231,7 +243,8 @@ const p = '''{
                 },
                 "address":"0xcontactaddress"
           },
-          "sell_orders":{"payment_token_contract":{"eth_price": "1.01","usd_price":"1762.2"}}
+          "sell_orders":{"payment_token_contract":{"eth_price": "1.01","usd_price":"1762.2"}},
+          "permalink" :"https://www.youtube.com/watch?v=sAXZbfLzJUg&ab_channel=sethandthecrew"
        },
        {
           "image_url":"https://lh3.googleusercontent.com/8O6-2qoV1lVZggyEZGc9GfKvjuvDPW9UMeG2AUnmG8w-W8pQOInUQyaj31dPhskcSLtLdER7cHmLAZnR9KqJzXpDv4Gi8CNXOLmc9Fo",
@@ -249,7 +262,8 @@ const p = '''{
                 },
                 "address":"0xcontactaddress"
           },
-          "sell_orders":{"payment_token_contract":{"eth_price": "1.01","usd_price":"1762.2"}}
+          "sell_orders":{"payment_token_contract":{"eth_price": "1.01","usd_price":"1762.2"}},
+          "permalink" :"https://www.youtube.com/watch?v=sAXZbfLzJUg&ab_channel=sethandthecrew"
        },
        {
           "image_url":"https://lh3.googleusercontent.com/8O6-2qoV1lVZggyEZGc9GfKvjuvDPW9UMeG2AUnmG8w-W8pQOInUQyaj31dPhskcSLtLdER7cHmLAZnR9KqJzXpDv4Gi8CNXOLmc9Fo",
@@ -267,7 +281,8 @@ const p = '''{
                 },
                 "address":"0xcontactaddress"
           },
-          "sell_orders":{"payment_token_contract":{"eth_price": "1.01","usd_price":"1762.2"}}
+          "sell_orders":{"payment_token_contract":{"eth_price": "1.01","usd_price":"1762.2"}},
+          "permalink" :"https://www.youtube.com/watch?v=sAXZbfLzJUg&ab_channel=sethandthecrew"
        }
     ]
  }

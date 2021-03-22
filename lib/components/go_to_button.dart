@@ -7,10 +7,16 @@ class GoToButton extends StatelessWidget {
   final String text;
   final Color color;
   final IconData icon;
-  GoToButton({@required this.url, this.text, @required this.color, this.icon});
+  GoToButton(
+      {this.url =
+          'https://www.youtube.com/watch?v=sAXZbfLzJUg&ab_channel=sethandthecrew',
+      @required this.text,
+      @required this.color,
+      this.icon});
   @override
   Widget build(BuildContext context) {
     return FlatButton(
+      padding: EdgeInsets.all(20.0),
       onPressed: () {
         _launchURL(url);
       },
@@ -19,6 +25,7 @@ class GoToButton extends StatelessWidget {
           ? Text(
               text,
               style: kGoToButtonTextStyle,
+              textAlign: TextAlign.center,
             )
           : Row(
               children: [

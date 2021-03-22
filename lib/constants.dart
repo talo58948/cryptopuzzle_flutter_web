@@ -15,7 +15,7 @@ const kTitleStyle = TextStyle(
   wordSpacing: 6.0,
   fontSize: 48.0,
   height: 1.6,
-  fontFamily: 'RobotoCondensed-Light.ttf',
+  fontFamily: 'Roboto',
   color: Colors.black,
 );
 
@@ -24,14 +24,14 @@ const kContentStyle = TextStyle(
   wordSpacing: 6.0,
   fontSize: 18.0,
   height: 1.6,
-  fontFamily: 'RobotoCondensed-Light.ttf',
+  fontFamily: 'Roboto',
 );
 const kNavbarTitlesStyle = TextStyle(
   letterSpacing: 2.5,
   wordSpacing: 6.0,
   fontSize: 18.0,
   height: 1.6,
-  fontFamily: 'RobotoCondensed-Light.ttf',
+  fontFamily: 'Roboto',
   color: Colors.white,
   textBaseline: TextBaseline.ideographic,
 );
@@ -43,7 +43,7 @@ const kSecondaryColor = Color(0xFF181818);
 const kAccentColor = Colors.red;
 const kSecondaryAccentColor = Colors.redAccent;
 
-const kFocusedPieceWidth = 500.0;
+const kFocusedPieceWidth = 400.0;
 
 const kContractAddress = '0x7C40c393DC0f283F318791d746d894DdD3693572';
 //0x655Ca549CfCEc6f3f8f224F7285fc05cf6c5eD1d
@@ -52,7 +52,16 @@ const kGoToButtonTextStyle = TextStyle(
   wordSpacing: 6.0,
   fontSize: 18.0,
   height: 1.6,
-  fontFamily: 'RobotoCondensed-Light.ttf',
+  fontFamily: 'Roboto',
   color: kBackgroundColor,
-  textBaseline: TextBaseline.ideographic,
+  textBaseline: TextBaseline.alphabetic,
+);
+const kTwitterLink = 'https://twitter.com/PuzzleTokens';
+const kOpenSeaLink = 'https://opensea.io/collection/puzzletokens';
+const kPriceTextStyle = TextStyle(
+  letterSpacing: 1.5,
+  wordSpacing: 6.0,
+  fontSize: 18.0,
+  height: 1.6,
+  fontFamily: 'Roboto',
 );

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:web1/components/content_container.dart';
+import 'package:web1/components/go_to_button.dart';
 import 'package:web1/components/piece_widget.dart';
 import 'package:web1/components/transaction_history.dart';
 import 'package:web1/constants.dart';
+import 'package:web1/external/my_flutter_app_icons.dart';
 import 'package:web1/models/piece.dart';
 import 'package:web1/pages/custom_page.dart';
 
@@ -38,13 +40,47 @@ class PiecePage extends StatelessWidget {
                 SizedBox(
                   height: 50,
                 ),
-                PieceWidget(
-                  piece: piece,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    PieceWidget(
+                      piece: piece,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          height: 50,
+                        ),
+                        Container(
+                          child: Text(
+                            'Ξ ${piece.ethPrice}',
+                            style: kPriceTextStyle,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 25,
+                        ),
+                        Container(
+                          child: Text(
+                            '\$ ${piece.usdPrice}',
+                            style: kPriceTextStyle,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 50,
+                        ),
+                        GoToButton(
+                          url: piece.permalink,
+                          color: Colors.blueAccent,
+                          text: 'OpenSea',
+                        ),
+                      ],
+                    )
+                  ],
                 ),
-                SizedBox(
-                  height: 50,
-                ),
-                TransactionHistory(),
+                // TransactionHistory(),
               ],
             ),
     );

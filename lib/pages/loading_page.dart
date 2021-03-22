@@ -14,6 +14,7 @@ class LoadingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     future.then((values) => then(values));
     return CustomPage(
+      showFooter: false,
       child: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,

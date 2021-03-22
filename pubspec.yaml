@@ -31,6 +31,7 @@ dependencies:
   stack: ^0.1.4
   http: ^0.13.1
   flutter_spinkit: ^5.0.0
+  footer: ^0.0.3
 
 dev_dependencies:
   flutter_test:
@@ -49,8 +50,6 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - images/
-    - fonts/RobotoCondensed-Light.ttf
-    - fonts/Coda-Regular.ttf
     - fonts/Share-Bold.ttf
   #   - images/a_dot_ham.jpeg
 
@@ -65,10 +64,19 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
+  fonts:
+    - family: Roboto
+      fonts:
+        - asset: fonts/RobotoCondensed-Light.ttf
+    - family: Coda
+      fonts:
+        - asset: fonts/Coda-Regular.ttf
+    - family: MyFlutterApp
+      fonts:
+        - asset: fonts/MyFlutterApp.ttf
   #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  # fonts:
+  #   - asset: fonts/Schyler-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
