@@ -20,13 +20,21 @@ enum Pages {
 }
 const Map<Pages, String> pageRouteMap = {
   Pages.home: HomePage.routeName,
-  Pages.featured: null,
+  Pages.featured: FeaturedPuzzlesPage.routeName,
   Pages.about: AboutPage.routeName,
   Pages.piece: PiecePage.routeName,
   Pages.loading: LoadingPage.routeName,
 };
 
 class Manager {
+  static void moveToFeatured(BuildContext context) {
+    Navigator.pushNamed(
+      context,
+      FeaturedPuzzlesPage.routeName,
+      arguments: Manager.getDisplayPuzzles(),
+    );
+  }
+
   static Function onPressOnPiece(Piece piece) {
     return (context) => moveTo(
           Pages.piece,

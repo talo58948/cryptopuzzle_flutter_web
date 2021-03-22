@@ -5,25 +5,67 @@ import 'package:web1/components/puzzle_grid_widget.dart';
 import 'package:web1/models/puzzle.dart';
 import '../manager.dart';
 import 'custom_page.dart';
+import 'package:modal_progress_hud/modal_progress_hud.dart';
 
-class FeaturedPuzzlesPage extends StatelessWidget {
+class FeaturedPuzzlesPageArgs {
+  final Future<List<Puzzle>> futurePuzzles;
+  FeaturedPuzzlesPageArgs(this.futurePuzzles);
+}
+
+class FeaturedPuzzlesPage extends StatefulWidget {
   static const routeName = '/featured-puzzles';
-  final List<Puzzle> puzzles;
-  FeaturedPuzzlesPage({@required this.puzzles});
+  FeaturedPuzzlesPage();
+
+  @override
+  _FeaturedPuzzlesPageState createState() => _FeaturedPuzzlesPageState();
+}
+
+class _FeaturedPuzzlesPageState extends State<FeaturedPuzzlesPage> {
+  bool inAsync = true;
+  FeaturedPuzzlesPageArgs args;
+  List<Puzzle> puzzles = [];
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return CustomPage(
-      page: Pages.featured,
-      child: Center(
-        child: SingleChildScrollView(
-          child: ContentContainer(
-            // height: 6000,
-            // width: 2000,
-            children: [
-              PuzzleGridWidget(
-                puzzles: puzzles,
-              )
-            ],
+    args = ModalRoute.of(context).settings.arguments;
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) {
+        if (args != null) {
+          print('l');
+          args.futurePuzzles
+              .then(
+            (puzzles) => setState(
+              () {
+                puzzles = puzzles;
+                inAsync = false;
+              },
+            ),
+          )
+              .catchError((e) {
+            print('ERROR ON FEATURED');
+          });
+        } else {}
+      },
+    );
+    return ModalProgressHUD(
+      inAsyncCall: true,
+      child: CustomPage(
+        page: Pages.featured,
+        child: Center(
+          child: SingleChildScrollView(
+            child: ContentContainer(
+              // height: 6000,
+              // width: 2000,
+              children: [
+                PuzzleGridWidget(
+                  puzzles: puzzles,
+                )
+              ],
+            ),
           ),
         ),
       ),
