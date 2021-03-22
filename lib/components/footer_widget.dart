@@ -15,13 +15,12 @@ class FooterWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text('Icons made by '),
-              GestureDetector(
-                onTap: () {
-                  _launchURL('https://www.freepik.com');
-                },
-                child: Text('https://www.freepik.com'),
-              ),
+              // Text('Icons made by '),
+              // GestureDetector(
+              //   onTap: () {
+              //     _launchURL('https://www.freepik.com');
+              //   },
+              // ),
               Text('Icons made by '),
               GestureDetector(
                 onTap: () {

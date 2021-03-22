@@ -9,7 +9,9 @@ import 'package:web1/components/navbar.dart';
 class CustomPage extends StatelessWidget {
   final Widget child;
   final bool showFooter;
-  CustomPage({@required this.child, this.showFooter = true});
+  final Pages page;
+  CustomPage(
+      {@required this.child, this.showFooter = true, @required this.page});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +24,9 @@ class CustomPage extends StatelessWidget {
       // ),
       body: Column(
         children: [
-          Navbar(),
+          Navbar(
+            page: page,
+          ),
           Expanded(
             child: !showFooter
                 ? SingleChildScrollView(

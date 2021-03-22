@@ -3,6 +3,7 @@ import 'package:web1/components/animated_text.dart';
 import 'package:web1/components/content_container.dart';
 import 'package:web1/constants.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../manager.dart';
 import 'custom_page.dart';
 
 class AboutPage extends StatelessWidget {
@@ -10,6 +11,7 @@ class AboutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomPage(
+      page: Pages.about,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [

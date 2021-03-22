@@ -21,7 +21,7 @@ class App extends StatelessWidget {
         HomePage.routeName: (context) => HomePage(),
         FeaturedPuzzlesPage.routeName: (context) => LoadingPage(
               future: Manager.getDisplayPuzzles(),
-              then: (puzzles) => Navigator.push(
+              then: (puzzles) => Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
                   builder: (context) => FeaturedPuzzlesPage(

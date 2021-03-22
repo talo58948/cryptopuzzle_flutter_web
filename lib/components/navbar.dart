@@ -4,13 +4,13 @@ import 'package:web1/manager.dart';
 
 class Navbar extends StatelessWidget {
   final Pages page;
-  Navbar({this.page});
+  Navbar({@required this.page});
   @override
   Widget build(BuildContext context) {
     Widget buildBar() {
       List<Widget> titles = [];
       Pages.values.forEach((element) {
-        if (element != Pages.piece) {
+        if (element != Pages.piece && element != Pages.loading) {
           titles.add(
             // ignore: deprecated_member_use
             FlatButton(

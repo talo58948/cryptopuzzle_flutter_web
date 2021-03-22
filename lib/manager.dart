@@ -4,6 +4,7 @@ import 'package:stack/stack.dart';
 import 'package:web1/pages/about_page.dart';
 import 'package:web1/pages/featured_puzzles_page.dart';
 import 'package:web1/pages/home_page.dart';
+import 'package:web1/pages/loading_page.dart';
 import 'package:web1/pages/piece_page.dart';
 import 'models/piece.dart';
 import 'constants.dart';
@@ -15,13 +16,24 @@ enum Pages {
   featured,
   about,
   piece,
+  loading,
 }
-// const Map<Pages, Route> routes;
+const Map<Pages, String> pageRouteMap = {
+  Pages.home: HomePage.routeName,
+  Pages.featured: null,
+  Pages.about: AboutPage.routeName,
+  Pages.piece: PiecePage.routeName,
+  Pages.loading: LoadingPage.routeName,
+};
 
 class Manager {
   static Function onPressOnPiece(Piece piece) {
-    return (context) => moveTo(Pages.piece, context,
-        from: Pages.featured, args: PiecePageArgs(piece));
+    return (context) => moveTo(
+          Pages.piece,
+          context,
+          args: PiecePageArgs(piece),
+          from: Pages.featured,
+        );
     //remember to do Hero animation with the piece
   }
 
@@ -59,37 +71,104 @@ class Manager {
   }
 
   static Stack<Pages> navStack = Stack<Pages>();
-  static void moveTo(Pages to, BuildContext context,
-      {Pages from, PiecePageArgs args}) {
-    if (from != null && to == from) {
+  // static void moveTo(Pages to, BuildContext context,
+  //     {Pages from, PiecePageArgs args}) {
+  //   if ((from != null && to == from) || to == Pages.loading) {
+  //     return;
+  //   }
+  //   if (navStack.isNotEmpty && navStack.top() == to) {
+  //     navStack.pop();
+  //     Navigator.pop(context);
+  //   } else {
+  //     switch (to) {
+  //       case Pages.featured:
+  //         Navigator.pushNamed(context, FeaturedPuzzlesPage.routeName);
+  //         break;
+  //       case Pages.home:
+  //         Navigator.pushNamed(context, HomePage.routeName);
+  //         break;
+  //       case Pages.about:
+  //         Navigator.pushNamed(context, AboutPage.routeName);
+  //         break;
+  //       case Pages.piece:
+  //         Navigator.pushNamed(
+  //           context,
+  //           PiecePage.routeName,
+  //           arguments: args,
+  //         );
+  //         break;
+  //       default:
+  //         break;
+  //     }
+  //     if (from != null) {
+  //       navStack.push(from);
+  //     }
+  //     print(navStack.top() != null ? navStack.top() : 'null');
+  //   }
+  // }
+
+  static Stack<Pages> prevRoutes = new Stack<Pages>();
+  static void moveTo(
+    Pages to,
+    BuildContext context, {
+    Pages from,
+    dynamic args,
+  }) {
+    // print('FROM: $from\nTO: $to\n');
+    print('FEATURED NAME IS\n${pageRouteMap[Pages.featured]}');
+    print('\n\nSTART stack is:\n');
+    _printAllStack(prevRoutes);
+
+    if (to == from) {
       return;
     }
-    if (navStack.isNotEmpty && navStack.top() == to) {
-      navStack.pop();
-      Navigator.pop(context);
-    } else {
-      switch (to) {
-        case Pages.featured:
-          Navigator.pushNamed(context, FeaturedPuzzlesPage.routeName);
-          break;
-        case Pages.home:
-          Navigator.pushNamed(context, HomePage.routeName);
-          break;
-        case Pages.about:
-          Navigator.pushNamed(context, AboutPage.routeName);
-          break;
-        case Pages.piece:
-          Navigator.pushNamed(
-            context,
-            PiecePage.routeName,
-            arguments: args,
-          );
-      }
-      if (from != null) {
-        navStack.push(from);
+    if (prevRoutes.isEmpty) {
+      prevRoutes.push(from);
+    }
+    if (prevRoutes.isNotEmpty) {
+      if (prevRoutes.contains(to)) {
+        while (prevRoutes.top() != to) {
+          prevRoutes.pop();
+        }
+        Navigator.popUntil(context, (route) {
+          return route.settings.name == pageRouteMap[to];
+        });
+        return;
       }
     }
+    prevRoutes.push(to);
+    switch (to) {
+      case Pages.home:
+        Navigator.pushNamed(context, HomePage.routeName);
+        break;
+      case Pages.about:
+        Navigator.pushNamed(context, AboutPage.routeName);
+        break;
+      case Pages.featured:
+        Navigator.pushNamed(context, FeaturedPuzzlesPage.routeName);
+        break;
+      case Pages.piece:
+        Navigator.pushNamed(context, PiecePage.routeName, arguments: args);
+        break;
+      default:
+    }
+
+    print('\n\nEND stack is:\n');
+    _printAllStack(prevRoutes);
   }
 
   static void onPressedOnFAB() {}
+  static void _printAllStack(Stack stack) {
+    Stack temp = Stack();
+    int count = 0;
+    while (stack.isNotEmpty) {
+      print('$count: ${stack.top()}');
+      temp.push(stack.pop());
+      count++;
+    }
+    print('\n');
+    while (temp.isNotEmpty) {
+      stack.push(temp.pop());
+    }
+  }
 }

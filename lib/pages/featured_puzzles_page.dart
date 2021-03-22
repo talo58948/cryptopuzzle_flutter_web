@@ -3,6 +3,7 @@ import 'package:web1/components/content_container.dart';
 import 'package:web1/components/floating_widget.dart';
 import 'package:web1/components/puzzle_grid_widget.dart';
 import 'package:web1/models/puzzle.dart';
+import '../manager.dart';
 import 'custom_page.dart';
 
 class FeaturedPuzzlesPage extends StatelessWidget {
@@ -12,6 +13,7 @@ class FeaturedPuzzlesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomPage(
+      page: Pages.featured,
       child: Center(
         child: SingleChildScrollView(
           child: ContentContainer(

@@ -29,6 +29,7 @@ class PiecePage extends StatelessWidget {
 
     final Piece piece = args != null ? args.piece : null;
     return CustomPage(
+      page: Pages.piece,
       child: args == null
           ? Container()
           : ContentContainer(
