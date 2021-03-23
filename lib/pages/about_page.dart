@@ -29,12 +29,7 @@ class AboutPage extends StatelessWidget {
               SizedBox(
                 height: 70,
               ),
-              Container(
-                child: Text(
-                  kAboutContent,
-                  style: kContentStyle,
-                ),
-              ),
+              Container(),
             ],
           ),
           Image(
@@ -51,12 +46,7 @@ class AboutPage extends StatelessWidget {
               SizedBox(
                 height: 70,
               ),
-              Container(
-                child: Text(
-                  kAboutContent,
-                  style: kContentStyle,
-                ),
-              ),
+              Container(),
             ],
           ),
         ],
