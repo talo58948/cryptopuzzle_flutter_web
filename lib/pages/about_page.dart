@@ -58,6 +58,4 @@ class AboutPage extends StatelessWidget {
 void _launchURL(String _url) async =>
     await canLaunch(_url) ? await launch(_url) : throw 'Could not launch $_url';
 
-const String kAboutContent =
-    "I think what I'm seeing here is an identical epistemology to religion transferring itself ideologically in the political realm, but with serious consequences. There seems to be a cognitive intermediation zone between religious & ideological commitment, with ideological adherence to the dogmas injected by media & our emotional interpretations. The ideological replacement to religious belief is grounded in virtually no empirical data & facts and is driving our civilization to the ground, insofar as we engage in it. Religious belief in spite of of its faults, guides human consciousness and assists in ethical decision making, placing the individual sovereign above all his/hers responsibilities to the burden of life. It's replacement - dogmatic Ideological adherence, embodies a set of doctrines taking that responsibility off of the individual and placing the blame onto others. As a means of tactical persuasion, it uses misleading & factually baseless information. It installs methodical trip wires into the brains of politically susceptible teenagers.";
 AppBar appBar;
