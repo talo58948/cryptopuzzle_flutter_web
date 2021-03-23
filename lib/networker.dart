@@ -43,7 +43,7 @@ class Networker {
         var resList = value;
         List<dynamic> assets = [];
         resList.forEach((element) {
-          assets += jsonDecode(element.body)['assets'];
+          assets += jsonDecode(element.body.toLowerCase())['assets'];
         });
         return assets;
       },
