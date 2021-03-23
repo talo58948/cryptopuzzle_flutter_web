@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart' hide Navigator;
 import 'package:web1/constants.dart';
 import 'package:web1/manager.dart';
+import 'package:web1/external/extensions.dart';
 
 class Navbar extends StatelessWidget {
   final Pages page;
@@ -72,11 +73,5 @@ class Navbar extends StatelessWidget {
         child: buildBar(),
       ),
     );
-  }
-}
-
-extension StringExtension on String {
-  String capitalize() {
-    return "${this[0].toUpperCase()}${this.substring(1)}";
   }
 }

@@ -11,11 +11,11 @@ class PuzzleCabinet extends StatelessWidget {
     return Column(
       children: [
         Text(
-          puzzle.id,
+          puzzle.name,
           style: kPuzzleTitleStyle,
         ),
         SizedBox(
-          height: 10.0,
+          height: 20.0,
         ),
         Container(
           width: kPuzzleWidth,

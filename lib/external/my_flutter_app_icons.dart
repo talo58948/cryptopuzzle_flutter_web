@@ -6,10 +6,10 @@
 /// following in your pubspec.yaml
 ///
 /// flutter:
-//  fonts:
-//   - family:  MyFlutterApp
-//     fonts:
-//      - asset: fonts/MyFlutterApp.ttf
+///   fonts:
+///    - family:  MyFlutterApp
+///      fonts:
+///       - asset: fonts/MyFlutterApp.ttf
 ///
 ///
 ///
@@ -21,6 +21,6 @@ class MyFlutterApp {
   static const _kFontFam = 'MyFlutterApp';
   static const String _kFontPkg = null;
 
-  static const IconData ethereum =
+  static const IconData twitter_bird_logo =
       IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

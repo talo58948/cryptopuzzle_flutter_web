@@ -13,14 +13,14 @@ import 'networker.dart';
 
 enum Pages {
   home,
-  featured,
+  puzzles,
   about,
   piece,
   loading,
 }
 const Map<Pages, String> pageRouteMap = {
   Pages.home: HomePage.routeName,
-  Pages.featured: FeaturedPuzzlesPage.routeName,
+  Pages.puzzles: FeaturedPuzzlesPage.routeName,
   Pages.about: AboutPage.routeName,
   Pages.piece: PiecePage.routeName,
   Pages.loading: LoadingPage.routeName,
@@ -40,7 +40,7 @@ class Manager {
           Pages.piece,
           context,
           args: PiecePageArgs(piece),
-          from: Pages.featured,
+          from: Pages.puzzles,
         );
     //remember to do Hero animation with the piece
   }
@@ -104,7 +104,7 @@ class Manager {
       case Pages.about:
         Navigator.pushNamed(context, AboutPage.routeName);
         break;
-      case Pages.featured:
+      case Pages.puzzles:
         Manager.moveToFeatured(context);
         break;
       case Pages.piece:

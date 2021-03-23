@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:web1/components/content_container.dart';
 import 'package:web1/components/floating_widget.dart';
 import 'package:web1/components/puzzle_grid_widget.dart';
+import 'package:web1/constants.dart';
 import 'package:web1/models/puzzle.dart';
 import 'package:web1/pages/loading_page.dart';
 import '../manager.dart';
@@ -54,7 +55,7 @@ class _FeaturedPuzzlesPageState extends State<FeaturedPuzzlesPage> {
     return inAsync
         ? LoadingPage()
         : CustomPage(
-            page: Pages.featured,
+            page: Pages.puzzles,
             child: Center(
               child: SingleChildScrollView(
                 child: ContentContainer(
@@ -63,7 +64,9 @@ class _FeaturedPuzzlesPageState extends State<FeaturedPuzzlesPage> {
                   children: [
                     PuzzleGridWidget(
                       puzzles: puzzles,
-                    )
+                    ),
+                    SizedBox(height: 75.0),
+                    _MoreComingSoon(),
                   ],
                 ),
               ),
@@ -72,99 +75,12 @@ class _FeaturedPuzzlesPageState extends State<FeaturedPuzzlesPage> {
   }
 }
 
-class ShitExperiment extends StatelessWidget {
-  const ShitExperiment({
-    Key key,
-  }) : super(key: key);
-
+class _MoreComingSoon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Expanded(
-          child: ShitRow(),
-        ),
-        Expanded(
-          child: ShitRow(),
-        ),
-        Expanded(
-          child: ShitRow(),
-        ),
-      ],
+    return Text(
+      'More puzzles coming soon...',
+      style: kSemiTransparentPiecePageStyle,
     );
   }
 }
-
-class ShitRow extends StatelessWidget {
-  const ShitRow({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          child: FloatingWidget(
-            magnitude: 50.0,
-            child: Shit(),
-          ),
-        ),
-        Expanded(
-          child: FloatingWidget(
-            magnitude: 50.0,
-            child: Shit(),
-          ),
-        ),
-        Expanded(
-          child: FloatingWidget(
-            magnitude: 50.0,
-            child: Shit(),
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class Shit extends StatelessWidget {
-  const Shit({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(100.0),
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.red,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
-              spreadRadius: 5,
-              blurRadius: 7,
-              offset: Offset(0, 3), // changes position of shadow
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-// class AnimCo extends StatefulWidget {
-//   @override
-//   _AnimCoState createState() => _AnimCoState();
-// }
-
-// class _AnimCoState extends State<AnimCo> {
-//   Offset offset = Offset(0, 0);
-//   bool hovered = false;
-//   @override
-//   Widget build(BuildContext context) {
-//     return HoverableWidget(
-//       child: Transform.translate(offset: offset),
-//     );
-//   }
-// }

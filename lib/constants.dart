@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 const kAvgWidthOfPuzzle = 500; //represents pixels
 const kPuzzleTitleStyle = TextStyle(
-  fontWeight: FontWeight.bold,
+  fontFamily: 'Open',
   fontSize: 24.0,
   color: kSecondaryColor,
 );
@@ -32,7 +32,7 @@ const kNavbarTitlesStyle = TextStyle(
   letterSpacing: 2.5,
   wordSpacing: 6.0,
   fontSize: 18.0,
-  height: 1.6,
+  height: 1.0,
   fontFamily: 'Roboto',
   color: kSecondaryColor,
   textBaseline: TextBaseline.ideographic,
@@ -55,7 +55,7 @@ const kSecondaryColor = Colors.white;
 const kAccentColor = Colors.red;
 const kSecondaryAccentColor = Colors.redAccent;
 
-const kFocusedPieceWidth = 400.0;
+const kFocusedPieceWidth = 600.0;
 
 const kContractAddress = '0x7C40c393DC0f283F318791d746d894DdD3693572';
 //0x655Ca549CfCEc6f3f8f224F7285fc05cf6c5eD1d
@@ -63,7 +63,6 @@ const kGoToButtonTextStyle = TextStyle(
   letterSpacing: 2.5,
   wordSpacing: 6.0,
   fontSize: 18.0,
-  height: 1.6,
   fontFamily: 'Roboto',
   color: kBackgroundColor,
   textBaseline: TextBaseline.alphabetic,
@@ -73,11 +72,21 @@ const kOpenSeaLink = 'https://opensea.io/collection/puzzletokens';
 const kPriceTextStyle = TextStyle(
   letterSpacing: 1.5,
   wordSpacing: 6.0,
-  fontSize: 18.0,
-  height: 1.6,
+  fontSize: 30.0,
+  height: 1.0,
   fontWeight: FontWeight.bold,
   fontFamily: 'Roboto',
 );
 const kFooterTextStyle = TextStyle(
   color: kSecondaryColor,
+);
+const kGoToButtonHeight = 50.0;
+const kStarSize = 40.0;
+const kSemiTransparentPiecePageStyle = TextStyle(
+  letterSpacing: 2.5,
+  wordSpacing: 6.0,
+  fontSize: 18.0,
+  height: 1.0,
+  fontFamily: 'Roboto',
+  color: Color(0xFFAEAEAE),
 );
