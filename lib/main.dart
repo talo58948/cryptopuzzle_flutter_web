@@ -14,6 +14,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: """PuzzleTokens - the world's first NFT puzzles""",
       theme: ThemeData.dark(),
       navigatorObservers: [routeObserver],
       debugShowCheckedModeBanner: false,
