@@ -88,7 +88,7 @@ class _FooterButtons extends StatelessWidget {
             text: 'OpenSea',
             color: Color(0xFF427DBD),
             image: AssetImage('images/opensea_logo.png'),
-            url: 'https://opensea.io/',
+            url: 'https://opensea.io/collection/puzzletokens/',
           ),
         ),
         SizedBox(
