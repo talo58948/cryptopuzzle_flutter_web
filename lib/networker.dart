@@ -6,7 +6,7 @@ import 'models/piece.dart';
 import 'models/puzzle.dart';
 import 'tester/tester.dart' as tester;
 
-const numOfPieces = 63;
+const numOfPieces = 9;
 const contractAddres = kContractAddress;
 Uri uri = Uri.https('api.opensea', '/api/v1/assets', {
   'asset_contract_address': contractAddres,
@@ -102,7 +102,7 @@ class Networker {
 //   }
 // }
   Future<List<Puzzle>> getAllPuzzles() async {
-    return getAllAssetsTest().then((assets) {
+    return getAllAssets().then((assets) {
       List<dynamic> piecesJson = assets;
       List<Piece> pieces = [];
       piecesJson.forEach((pieceJson) {
