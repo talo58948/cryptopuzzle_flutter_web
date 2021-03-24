@@ -51,16 +51,6 @@ class Manager {
     return (_width / kPuzzleContainerWidth).floor();
   }
 
-  // static double getSizeOfSinglePuzzle(
-  //     BuildContext context, int maxPuzzlesInRow) {
-  //   double _width = MediaQuery.of(context).size.width / maxPuzzlesInRow;
-  //   if (_width > kPuzzleCabinetWidthMax) {
-  //     _width = kPuzzleCabinetWidthMax;
-  //   } else if (_width < kPuzzleCabinetWidthMin) {
-  //     _width = kPuzzleCabinetWidthMin;
-  //   }
-  //   return _width;
-  // }
   static Future<List<Puzzle>> getDfltPuzzles() {
     return Future.delayed(Duration(milliseconds: 500), () {
       List<Puzzle> puzzles = [];
@@ -85,7 +75,6 @@ class Manager {
     Pages from,
     dynamic args,
   }) {
-    // print('FROM: $from\nTO: $to\n')
     if (to == from) {
       return;
     }

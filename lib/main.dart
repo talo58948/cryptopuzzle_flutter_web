@@ -21,17 +21,6 @@ class App extends StatelessWidget {
       routes: {
         HomePage.routeName: (context) => HomePage(),
         FeaturedPuzzlesPage.routeName: (context) => FeaturedPuzzlesPage(),
-        //  LoadingPage(
-        //       future: Manager.getDisplayPuzzles(),
-        //       then: (puzzles) => Navigator.pushReplacement(
-        //         context,
-        //         MaterialPageRoute(
-        //           builder: (context) => FeaturedPuzzlesPage(
-        //             puzzles: puzzles,
-        //           ),
-        //         ),
-        //       ),
-        //     ),
         AboutPage.routeName: (context) => AboutPage(),
         PiecePage.routeName: (context) => PiecePage()
       },
