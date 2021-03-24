@@ -57,8 +57,10 @@ const kSecondaryAccentColor = Colors.redAccent;
 
 const kFocusedPieceWidth = 600.0;
 
+const kOpenSeaContractAddress = '0x495f947276749Ce646f68AC8c248420045cb7b5e';
 const kContractAddress = '0x655Ca549CfCEc6f3f8f224F7285fc05cf6c5eD1d';
 //0x655Ca549CfCEc6f3f8f224F7285fc05cf6c5eD1d
+
 const kGoToButtonTextStyle = TextStyle(
   letterSpacing: 2.5,
   wordSpacing: 6.0,

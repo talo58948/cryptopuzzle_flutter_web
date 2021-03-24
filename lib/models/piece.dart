@@ -48,7 +48,8 @@ class Piece {
         rarity = _rarityFromString(json['traits']['rarity']),
         ratio = _widthHeightRatioFromString(json['traits']['size']),
         owner = User.fromJson(json['owner']['user']),
-        owned = json['owner']['address'] != kContractAddress,
+        owned = (json['owner']['address'] != kContractAddress) &&
+            (json['owner']['address'] != kOpenSeaContractAddress),
         puzzleId = json['traits']['puzzle_id'],
         puzzleName = json['traits']['puzzle_name'],
         index = json['traits']['index'].toInt(),
