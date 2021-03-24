@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart'
     show AssetImage, ImageProvider, NetworkImage, required;
+import '../constants.dart';
 import 'user.dart';
 import 'package:web1/constants.dart';
 
@@ -18,6 +19,28 @@ class Piece {
   final double ethPrice;
   final double usdPrice;
   final String permalink;
+
+  String toString() {
+    return owner.name +
+        ' ' +
+        owned.toString() +
+        ' ' +
+        ratio.toString() +
+        ' ' +
+        rarity.toString() +
+        ' ' +
+        puzzleId.toString() +
+        ' ' +
+        puzzleName.toString() +
+        ' ' +
+        index.toString() +
+        ' ' +
+        ethPrice.toString() +
+        ' ' +
+        usdPrice.toString() +
+        ' ' +
+        permalink;
+  }
 
   static const Piece dflt = Piece(
     image: AssetImage('images/piece2.png'),
@@ -47,17 +70,22 @@ class Piece {
       : image = NetworkImage(json['image_url']),
         rarity = _rarityFromString(json['traits']['rarity']),
         ratio = _widthHeightRatioFromString(json['traits']['size']),
-        owner = User.fromJson(json['owner']['user']),
         owned = (json['owner']['address'] != kContractAddress) &&
-            (json['owner']['address'] != kOpenSeaContractAddress),
+            (json['owner']['address'] != kOpenSeaContractAddress) &&
+            (json['owner']['address'] != kNullAddress),
+        owner = User.fromJson(json['owner']['user']),
         puzzleId = json['traits']['puzzle_id'],
         puzzleName = json['traits']['puzzle_name'],
-        index = json['traits']['index'].toInt(),
-        length = json['traits']['length'].toInt(),
-        ethPrice = double.parse(
-            json['sell_orders']['payment_token_contract']['eth_price']),
-        usdPrice = double.parse(
-            json['sell_orders']['payment_token_contract']['usd_price']),
+        index = int.parse(json['traits']['index']),
+        length = int.parse(json['traits']['length']),
+        ethPrice = json['sell_orders'].length != 0
+            ? double.parse(
+                json['sell_orders']['payment_token_contract']['eth_price'])
+            : 0.0,
+        usdPrice = json['sell_orders'].length != 0
+            ? double.parse(
+                json['sell_orders']['payment_token_contract']['usd_price'])
+            : 0.0,
         permalink = json['permalink'];
 }
 

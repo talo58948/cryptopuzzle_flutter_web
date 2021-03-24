@@ -31,14 +31,12 @@ class RouteAwareWidgetState extends State<RouteAwareWidget> with RouteAware {
   @override
   // Called when the current route has been pushed.
   void didPush() {
-    print('didPush ${widget.page.toString()}');
     Manager.onNavPush(widget.page);
   }
 
   @override
   // Called when the top route has been popped off, and the current route shows up.
   void didPopNext() {
-    print('didPopNext ${widget.page.toString()}');
     Manager.onNavPop();
   }
 

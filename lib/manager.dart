@@ -10,7 +10,10 @@ import 'models/piece.dart';
 import 'constants.dart';
 import 'models/puzzle.dart';
 import 'networker.dart';
+import 'pages/home_page.dart';
 
+//enum for all the pages for easy access,
+//some functions use it to detect which page is being proccessed
 enum Pages {
   home,
   puzzles,
@@ -18,6 +21,10 @@ enum Pages {
   piece,
   loading,
 }
+
+/*
+a map that given a Page of type Pages return the route name associated with it
+*/
 const Map<Pages, String> pageRouteMap = {
   Pages.home: HomePage.routeName,
   Pages.puzzles: FeaturedPuzzlesPage.routeName,
@@ -26,7 +33,9 @@ const Map<Pages, String> pageRouteMap = {
   Pages.loading: LoadingPage.routeName,
 };
 
+//Manager holds key static functions that gives the site functionality
 class Manager {
+  //a functions that takes context of current widget tree and moves to featured puzzles screen, passes it args (puzzles)
   static void moveToFeatured(BuildContext context) {
     Navigator.pushNamed(
       context,
@@ -35,6 +44,7 @@ class Manager {
     );
   }
 
+  //when pressed on a given piece it redirects to the piece page with all of its attributes
   static Function onPressOnPiece(Piece piece) {
     return (context) => moveTo(
           Pages.piece,
@@ -45,12 +55,13 @@ class Manager {
     //remember to do Hero animation with the piece
   }
 
+  //a function that gets the max puzzles allowed on a single row in the featured puzzles grid
   static int getMaxPuzzlesInRow(BoxConstraints constraints) {
     double _width = constraints.widthConstraints().maxWidth;
-    //maybe listen for changes??
     return (_width / kPuzzleContainerWidth).floor();
   }
 
+  //a function that gets the default puzzles, for TESTING
   static Future<List<Puzzle>> getDfltPuzzles() {
     return Future.delayed(Duration(milliseconds: 500), () {
       List<Puzzle> puzzles = [];
@@ -61,23 +72,33 @@ class Manager {
     });
   }
 
+  //gets all display puzzles from Networker
   static Future<List<Puzzle>> getDisplayPuzzles() {
     Networker net = Networker();
     return net.getAllPuzzles();
   }
 
-  static Stack<Pages> navStack = Stack<Pages>();
-
+  //keeps track of all previos routes visited
   static Stack<Pages> _prevRoutes = new Stack<Pages>();
+
+  //makes sure to be up to date any time the Navigator pushes a route or pops
+  static void onNavPop() => _prevRoutes.pop();
+  static void onNavPush(Pages page) => _prevRoutes.push(page);
+
+  //moves to a given page, if already been to page it pops until it finds it, else pushes it on top with arguments if needed
   static void moveTo(
-    Pages to,
+    Pages to, //the desired page to move to
     BuildContext context, {
-    Pages from,
-    dynamic args,
+    //the context of the widget tree
+    Pages
+        from, // the page to move from {optional, might move from nothing like when initiallizing}
+    dynamic args, //the arguments that might get passed, {optional}
   }) {
+    //in case it tries to move to the already visible page it does nothing, as expected
     if (to == from) {
       return;
     }
+    //if there are previous routes, and they contain the desired route that got requested to move to, pop until
     if (_prevRoutes.isNotEmpty) {
       if (_prevRoutes.contains(to)) {
         Navigator.popUntil(context, (route) {
@@ -86,6 +107,9 @@ class Manager {
         return;
       }
     }
+
+    //in case previous routes do not contain the desired route we need to get to,
+    //a simple switch statement that pushes the desired route
     switch (to) {
       case Pages.home:
         Navigator.pushNamed(context, HomePage.routeName);
@@ -103,11 +127,18 @@ class Manager {
     }
   }
 
-  static void onNavPop() => _prevRoutes.pop();
+  static void moveToHomeAndReplace(Pages from, BuildContext context) {
+    if (from == Pages.home) {
+      return;
+    }
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => HomePage()));
+  }
 
-  static void onNavPush(Pages page) => _prevRoutes.push(page);
-
+  //when pressed on floating action button, this is what happens: {currently inactive because of no floating action button}
   static void onPressedOnFAB() {}
+
+  //a debuging tool that prints the entire stack
   // ignore: unused_element
   static void _printAllStack(Stack stack) {
     Stack temp = Stack();

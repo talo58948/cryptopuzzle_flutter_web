@@ -73,6 +73,7 @@ class Puzzle {
         ratio: puzzlePieces[0].ratio,
       ));
     }
+
     return puzzles;
   }
 

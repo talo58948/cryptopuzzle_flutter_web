@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:web1/components/content_container.dart';
 import 'package:web1/components/go_to_button.dart';
 import 'package:web1/constants.dart';
 import 'package:web1/external/my_flutter_app_icons.dart';

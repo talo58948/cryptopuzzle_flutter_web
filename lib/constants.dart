@@ -1,15 +1,36 @@
 import 'package:flutter/material.dart';
 
-const kAvgWidthOfPuzzle = 500; //represents pixels
+//Contract Addresses
+const kOpenSeaContractAddress = '0x495f947276749Ce646f68AC8c248420045cb7b5e';
+const kContractAddress = '0x655Ca549CfCEc6f3f8f224F7285fc05cf6c5eD1d';
+const kNullAddress = '0x0000000000000000000000000000000000000000';
+//0x655Ca549CfCEc6f3f8f224F7285fc05cf6c5eD1d
+
+//set links
+const kTwitterLink = 'https://twitter.com/PuzzleTokens';
+const kOpenSeaLink = 'https://opensea.io/collection/puzzletokens';
+
+//set sizes
+const kPuzzleContainerWidth = 400.0;
+const kPuzzleWidth = 350.0;
+const kWidthOfContentContainer = 1000.0;
+const kFocusedPieceWidth = 600.0;
+const kGoToButtonHeight = 50.0;
+const kStarSize = 40.0;
+
+//color scheme
+const kBackgroundColor = Color(0xFF181818);
+const kNavColor = Colors.black;
+const kSecondaryColor = Colors.white;
+const kAccentColor = Colors.red;
+const kSecondaryAccentColor = Colors.redAccent;
+
+//text style and themes
 const kPuzzleTitleStyle = TextStyle(
   fontFamily: 'Open',
   fontSize: 24.0,
   color: kSecondaryColor,
 );
-
-const kPuzzleContainerWidth = 400.0;
-const kPuzzleWidth = 350.0;
-
 const kTitleStyle = TextStyle(
   fontWeight: FontWeight.bold,
   letterSpacing: 2.5,
@@ -19,7 +40,6 @@ const kTitleStyle = TextStyle(
   fontFamily: 'Roboto',
   color: kSecondaryColor,
 );
-
 const kContentStyle = TextStyle(
   letterSpacing: 2.5,
   wordSpacing: 6.0,
@@ -47,20 +67,6 @@ const kRealTitleStyle = TextStyle(
   color: kSecondaryColor,
   textBaseline: TextBaseline.ideographic,
 );
-const kWidthOfContentContainer = 1000.0;
-
-const kBackgroundColor = Color(0xFF181818);
-const kNavColor = Colors.black;
-const kSecondaryColor = Colors.white;
-const kAccentColor = Colors.red;
-const kSecondaryAccentColor = Colors.redAccent;
-
-const kFocusedPieceWidth = 600.0;
-
-const kOpenSeaContractAddress = '0x495f947276749Ce646f68AC8c248420045cb7b5e';
-const kContractAddress = '0x655Ca549CfCEc6f3f8f224F7285fc05cf6c5eD1d';
-//0x655Ca549CfCEc6f3f8f224F7285fc05cf6c5eD1d
-
 const kGoToButtonTextStyle = TextStyle(
   letterSpacing: 2.5,
   wordSpacing: 6.0,
@@ -69,8 +75,6 @@ const kGoToButtonTextStyle = TextStyle(
   color: kBackgroundColor,
   textBaseline: TextBaseline.alphabetic,
 );
-const kTwitterLink = 'https://twitter.com/PuzzleTokens';
-const kOpenSeaLink = 'https://opensea.io/collection/puzzletokens';
 const kPriceTextStyle = TextStyle(
   letterSpacing: 1.5,
   wordSpacing: 6.0,
@@ -82,8 +86,6 @@ const kPriceTextStyle = TextStyle(
 const kFooterTextStyle = TextStyle(
   color: kSecondaryColor,
 );
-const kGoToButtonHeight = 50.0;
-const kStarSize = 40.0;
 const kSemiTransparentPiecePageStyle = TextStyle(
   letterSpacing: 2.5,
   wordSpacing: 6.0,

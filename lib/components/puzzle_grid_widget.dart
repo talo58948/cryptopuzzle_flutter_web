@@ -8,7 +8,6 @@ class PuzzleGridWidget extends StatelessWidget {
 
   PuzzleGridWidget({@required this.puzzles});
   Widget buildGrid(BoxConstraints constraints) {
-    // try {
     List<Widget> columnChildren = [];
     int numInRow = Manager.getMaxPuzzlesInRow(constraints);
     numInRow = numInRow == 0 ? 1 : numInRow;
@@ -69,7 +68,7 @@ class PuzzleGridWidget extends StatelessWidget {
         children: columnChildren,
       );
     } catch (e) {
-      print('error in puzzle grid widget$e');
+      print('error in puzzle grid widget $e');
       return Container(
         child: Text('Oof'),
       );

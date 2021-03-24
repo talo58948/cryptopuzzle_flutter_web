@@ -7,17 +7,19 @@ import 'package:web1/external/route_aware_widget.dart';
 import '../manager.dart';
 import 'package:web1/components/navbar.dart';
 
+//custome page
 class CustomPage extends StatelessWidget {
   final Widget child;
-  final bool materialPage;
-  final Pages page;
-  final BoxDecoration decoration;
+  final bool
+      materialPage; //if isnt material page dont show navbar footer and other stuff
+  final Pages page; //page matching Pages enum
+
   CustomPage({
     @required this.child,
     this.materialPage = true,
     @required this.page,
-    this.decoration,
   });
+
   @override
   Widget build(BuildContext context) {
     return materialPage
@@ -47,7 +49,7 @@ class _CustomPageContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kBackgroundColor,
-
+      // {CURRENTLY INACTIVE FLOATING ACTION BUTTON}
       // floatingActionButton: FloatingActionButton(
       //   backgroundColor: kAccentColor,
       //   splashColor: kSecondaryAccentColor,
