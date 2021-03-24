@@ -155,10 +155,3 @@ class __PuzzlePieceState extends State<_PuzzlePiece> {
     );
   }
 }
-/*ButtonTheme(
-  padding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0), //adds padding inside the button
-  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap, //limits the touch area to the button area
-  minWidth: 0, //wraps child's width
-  height: 0, //wraps child's height
-  child: RaisedButton(onPressed: (){}, child: Text('Button Text')), //your original button
-);*/
