@@ -112,21 +112,3 @@ class _PieceWidget extends StatelessWidget {
     );
   }
 }
-
-// ButtonTheme(
-//               padding: EdgeInsets.symmetric(
-//                   vertical: 0.0,
-//                   horizontal: 0.0), //adds padding inside the button
-//               materialTapTargetSize: MaterialTapTargetSize
-//                   .shrinkWrap, //limits the touch area to the button area
-//               minWidth: 0, //wraps child's width
-//               height: 0, //wraps child's height
-
-//                FlatButton(
-//             padding: const EdgeInsets.all(0.0),
-//             onPressed: onPressed,
-//             child: Image(
-//               image: piece.image,
-//               fit: BoxFit.cover,
-//             ),
-//           ),
