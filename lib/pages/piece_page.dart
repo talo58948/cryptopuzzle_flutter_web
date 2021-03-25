@@ -147,15 +147,20 @@ class _PriceWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Text(
-          'Price:  Ξ ${ethPrice.toStringAsFixed(2)} ',
+          usdPrice == 0
+              ? 'Price is not currently set'
+              : 'Price:  Ξ ${ethPrice.toStringAsFixed(2)} ',
           textAlign: TextAlign.left,
-          style: kPriceTextStyle,
+          style:
+              usdPrice == 0 ? kSemiTransparentPiecePageStyle : kPriceTextStyle,
         ),
-        Text(
-          '(\$${usdPrice.toStringAsFixed(0)})',
-          textAlign: TextAlign.left,
-          style: kSemiTransparentPiecePageStyle,
-        ),
+        usdPrice == 0
+            ? SizedBox(width: 0.0)
+            : Text(
+                '(\$${usdPrice.toStringAsFixed(0)})',
+                textAlign: TextAlign.left,
+                style: kSemiTransparentPiecePageStyle,
+              ),
       ],
     );
   }
