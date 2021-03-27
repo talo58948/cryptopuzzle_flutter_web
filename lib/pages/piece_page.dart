@@ -89,13 +89,21 @@ class _RightDiv extends StatelessWidget {
           SizedBox(
             height: 40.0,
           ),
-          _PriceWidget(
-            usdPrice: piece.usdPrice,
-            ethPrice: piece.ethPrice,
-          ),
-          SizedBox(
-            height: 40.0,
-          ),
+          piece.usdPrice == 0
+              ? SizedBox(
+                  height: 0.0,
+                )
+              : _PriceWidget(
+                  usdPrice: piece.usdPrice,
+                  ethPrice: piece.ethPrice,
+                ),
+          piece.usdPrice == 0
+              ? SizedBox(
+                  height: 0,
+                )
+              : SizedBox(
+                  height: 40.0,
+                ),
           _RarityWidget(
             rarity: piece.rarity,
           ),
