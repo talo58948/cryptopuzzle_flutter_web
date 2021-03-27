@@ -78,14 +78,16 @@ class Piece {
         puzzleName = json['traits']['puzzle_name'],
         index = int.parse(json['traits']['index']),
         length = int.parse(json['traits']['length']),
-        ethPrice = json['sell_orders'].length != 0
-            ? double.parse(
-                json['sell_orders']['payment_token_contract']['eth_price'])
-            : 0.0,
-        usdPrice = json['sell_orders'].length != 0
-            ? double.parse(
-                json['sell_orders']['payment_token_contract']['usd_price'])
-            : 0.0,
+        // ethPrice = json['sell_orders'].length != 0
+        //     ? double.parse(
+        //         json['sell_orders']['payment_token_contract']['eth_price'])
+        //     : 0.0,
+        // usdPrice = json['sell_orders'].length != 0
+        //     ? double.parse(
+        //         json['sell_orders']['payment_token_contract']['usd_price'])
+        //     : 0.0,
+        ethPrice = 0,
+        usdPrice = 0,
         permalink = json['permalink'];
 }
 
